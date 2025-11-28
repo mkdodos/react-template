@@ -1,14 +1,38 @@
 /* 表格外框 */
 .ui.table.basic {
-  border-color: #6A9C89;
+  border-color: #73C8D2;
 }
 /* 標題列 */
-.ui.celled.table.basic thead th {
-  background-color: #C1D8C3;
-  /* border-color: #6A9C89; */
+.ui.striped.table.basic thead th {
+  background-color: #73C8D2;
+  /* 73C8D2 BADFDB*/
+  /* border-color: #FFA725; */
 }
-/* 儲存格 */
-/* .ui.celled.table.basic tr td {
+
+/* .ui.celled.table.basic thead th {
+  background-color: #C1D8C3;
   border-color: #6A9C89;
 } */
+/* 儲存格 */
+/* .ui.striped.table.basic tr td {
+  border-color: #73C8D2;
+ 
+} */
 
+/* .ui.celled.table.basic tr {
+  background-color: #6A9C89;
+} */
+
+/* .ui.striped.table  {
+  background-color: #6A9C89;
+} */
+
+/* .ui.basic.striped.table tbody tr {
+  background-color: #F5F5F0 !important;
+} */
+
+/* 偶數列 */
+.ui.basic.striped.table tbody tr:nth-child(2n) {
+  /* background-color: #FCF9EA !important; */
+  background-color: #F5F5F0 !important;
+}
