@@ -1,5 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
+import 'semantic-ui-css/semantic.min.css'
 import App from "./App";
 
 // root 對應 index.html 的 div id="root"

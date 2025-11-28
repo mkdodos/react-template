@@ -1,0 +1,14 @@
+/* 表格外框 */
+.ui.table.basic {
+  border-color: #6A9C89;
+}
+/* 標題列 */
+.ui.celled.table.basic thead th {
+  background-color: #C1D8C3;
+  /* border-color: #6A9C89; */
+}
+/* 儲存格 */
+/* .ui.celled.table.basic tr td {
+  border-color: #6A9C89;
+} */
+
