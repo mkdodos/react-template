@@ -1,12 +1,13 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
+import Vertical from "./components/Vertical";
+import Basic from "./components/Basic";
 export default function index() {
   return (
     <div>
-      <Menu>
-        <Menu.Item>B</Menu.Item>
-        <Menu.Item>C</Menu.Item>
-      </Menu>
+      <Basic/>
+      <Vertical/>
+      
     </div>
   );
 }

@@ -11,6 +11,9 @@ export default function Navbar() {
         <Menu.Item as={Link} to="/button">
           按鈕
         </Menu.Item>
+         <Menu.Item as={Link} to="/menu">
+          選單
+        </Menu.Item>
       </Menu>
     </div>
   );
