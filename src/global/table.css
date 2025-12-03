@@ -1,0 +1,53 @@
+/* 表格外框 */
+.ui.table {  
+  border-color: gray;
+}
+
+/* celled table */
+/* 標題列 */
+.ui.celled.table thead th {
+  background-color: #bbdbde;
+  border-color: gray;
+}
+
+/* 儲存格 */
+.ui.celled.table tr td {
+  border-color: #767676;
+}
+
+/* 薪資 (移到列時改變顏色) */
+.ui.table.salary tr:hover {
+  background-color: #75dddd!important;
+  color: #000!important;
+}
+
+.ui.table.salary thead th {
+  border-color: #767676;
+}
+
+.ui.table.salary tr td {
+  border-color: #767676;
+}
+
+/* 薪資 */
+/* .ui.celled.table.salary tr:hover {
+  background-color: #75dddd!important;
+  color: #000!important;
+} */
+
+/* 新製工件預交日2周內 */
+.newIn2weeks {
+  color: green;
+  background-color: #eef2da;
+}
+
+/* 工件預交日逾期 */
+.overdue {
+  color: red;
+  background-color: #fff6f6;
+}
+
+/* 工作單號 */
+.workID {
+  cursor: pointer;
+}

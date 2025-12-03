@@ -1,0 +1,33 @@
+{
+  "columns": [
+    {
+      "dataKey": "id",
+      "title": "代號",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    },
+
+    {
+      "dataKey": "name",
+      "title": "名稱",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    },
+    {
+      "dataKey": "role",
+      "title": "名稱",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    },
+     {
+      "dataKey": "player",
+      "title": "名稱",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    }
+  ]
+}

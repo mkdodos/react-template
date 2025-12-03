@@ -14,6 +14,18 @@ export default function Navbar() {
          <Menu.Item as={Link} to="/menu">
           選單
         </Menu.Item>
+        <Menu.Item as={Link} to="/grid">
+          Grid
+        </Menu.Item>
+        <Menu.Item as={Link} to="/tab">
+          Tab
+        </Menu.Item>
+        <Menu.Item as={Link} to="/form">
+          Form
+        </Menu.Item>
+        <Menu.Item as={Link} to="/crud">
+          Crud
+        </Menu.Item>
       </Menu>
     </div>
   );

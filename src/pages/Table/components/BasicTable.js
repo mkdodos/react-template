@@ -13,10 +13,10 @@ import {
   Button,
   Icon,
 } from "semantic-ui-react";
-import People from "../Label";
+// import People from "../Label";
 
 import "./style.css";
-import { data } from "react-router-dom";
+// import { data } from "react-router-dom";
 
 export default function index() {
   
@@ -38,15 +38,16 @@ export default function index() {
     },
   ];
   return (
-    <Table className="basic" unstackable striped padded>
+    // basic='very' 無外框
+    <Table basic='very' className="basic" unstackable striped padded>
       <TableHeader>
         <TableRow>
           <TableHeaderCell>日期</TableHeaderCell>
           <TableHeaderCell>地點</TableHeaderCell>         
           <TableHeaderCell>人員</TableHeaderCell>
           <TableHeaderCell>
-            <Button icon primary>
-              <Icon name="plus" />
+            <Button primary icon>
+              <Icon  name="plus" />
             </Button>
           </TableHeaderCell>
         </TableRow>

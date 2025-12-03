@@ -1,9 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Table from "./pages/Table";
-
 import Menu from "./pages/Menu";
 import Button from "./pages/Button";
+import Grid from "./pages/Grid";
+import Tab from "./pages/Tab";
+import Form from "./pages/Form";
+
+import Crud from "./pages/Crud"
 
 import { Container, Divider } from "semantic-ui-react";
 
@@ -17,6 +21,10 @@ export default function App() {
           <Route path="/table" element={<Table />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/button" element={<Button />} />
+          <Route path="/grid" element={<Grid />} />
+          <Route path="/tab" element={<Tab />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/crud" element={<Crud />} />
         </Routes>
       </Container>
     </>
