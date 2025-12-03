@@ -134,8 +134,8 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
   return (
     <>
       <Modal
-        onClose={() => dispatch({ type: "CLOSE" })}
-        open={state.open}
+        onClose={() => dispatch({ type: "CLOSE_EDITFORM" })}
+        open={state.isEditFormOpen}
         closeIcon
       >
         <Modal.Header>編輯</Modal.Header>

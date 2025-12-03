@@ -1,100 +1,140 @@
-import { db } from "../../../utils/firebase";
-import {
-  query,
-  limit,
-  collection,
-  getDocs,
-  doc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  orderBy,
-  getDoc,
-  startAfter,
-} from "firebase/firestore/lite";
+import { API_HOST } from "../../../global/constants";
+import axios from "axios";
+// import { read } from "./pdo";
+import { read } from "./firebase";
 
 export const reducer = async (state, action) => {
-  // 集合名稱
-  const colName = "template";
-  // 編輯列
+  // console.log(pdo);
+  let folder = "TEMPLATE";
+  // 對應後端資料處理
+  let urlRead = `${API_HOST}/${folder}/read.php`;
+  let urlCreate = `${API_HOST}/${folder}/create.php`;
+  let urlUpdate = `${API_HOST}/${folder}/update.php`;
+  let urlDelete = `${API_HOST}/${folder}/delete.php`;
+
+  let response = null;
+
+  // 接收 row 值給後端處理(create,update)
   const row = action.payload?.row;
-  const index = action.payload?.index;
+
+  const headers = {
+    "Content-Type": "text/plain",
+  };
+
+  // editedRowIndex : 編輯列索引
+  // 儲存時依此判斷新增或更新
 
   // 執行相關動作
   switch (action.type) {
     // 載入資料
     case "LOAD":
-      // 取得集合
-      const col = collection(db, colName);
-      // 資料快照
-      const snapshot = await getDocs(col);
-      // 資料跑迴圈轉成物件陣列
-      const list = snapshot.docs.map((doc) => {
-        return { ...doc.data(), id: doc.id };
-      });
-
       return {
         ...state,
-        data: list,
+        data: await read({ year: 2022, month: 10 }),
         loading: false,
       };
 
     // 新增
-    case "ADD":     
+    case "ADD":
       return {
         ...state,
-        open: true,
-        rowIndex: -1,
+        editedRowIndex: -1,
+        isEditFormOpen: true,
       };
-
-    // 儲存新增的資料
-    case "CREATE":
-      const docRef = await addDoc(collection(db, colName), {
-        ...row,
-      });
-      // 接收後端傳回的 id , 加入 row 至陣列
-      state.data.unshift({ ...row, id: docRef.id });
-
-      return {
-        ...state,
-        data: state.data,
-        open: false,
-        rowIndex: -1,
-      };
-
     // 編輯
     case "EDIT":
-      return { ...state, open: true, rowIndex: index };
-
-    // 更新
-    case "UPDATE":    
-
-      await updateDoc(doc(db, colName, row.id), {
-        ...row,
-      });
-      Object.assign(state.data[state.rowIndex], row);
       return {
         ...state,
-        open: false,
-        data: state.data,
-        rowIndex: -1,
+        editedRowIndex: action.payload.editedRowIndex,
+        isEditFormOpen: true,
+      };
+
+    // 關閉編輯表單
+    case "CLOSE_EDITFORM":
+      return {
+        ...state,
+        isEditFormOpen: false,
+      };
+
+    // 新建
+    case "CREATE":
+      response = await axios.post(
+        urlCreate,
+        {
+          ...row,
+        },
+        { headers }
+      );
+      // 接收後端傳回的 id , 加入 row 至陣列
+      state.data.unshift({ ...row, id: response.data });
+      return {
+        ...state,
+        isEditFormOpen: false,
+        editedRowIndex: -1,
+      };
+
+    // 更新
+    case "UPDATE":
+      await axios.post(
+        urlUpdate,
+        {
+          ...row,
+        },
+        { headers }
+      );
+      Object.assign(state.data[state.editedRowIndex], row);
+
+      return {
+        ...state,
+        isEditFormOpen: false,
+        editedRowIndex: -1,
       };
 
     // 刪除
-    case "DELETE":      
+    case "DELETE":
       const id = action.payload.id;
-      await deleteDoc(doc(db, colName, id));     
-      const dataDel = state.data.filter((obj) => obj.id != id);
+      await axios.post(
+        urlDelete,
+        {
+          id,
+        },
+        { headers }
+      );
+      return {
+        ...state,
+        data: state.data.filter((obj) => obj.id != id),
+        isEditFormOpen: false,
+        editedRowIndex: -1,
+      };
+
+    // 排序
+    case "SORT":
+      let direction = "ascending";
+      // 排序後資料
+      let sortedData = state.data;
+      const columnName = action.payload.sortedColumn;
+      const columnType = action.payload.type;
+
+      if (state.sortedColumn == columnName) {
+        direction = state.direction == "ascending" ? "descending" : "ascending";
+        sortedData = state.data.slice().reverse();
+      } else {
+        direction = "ascending";
+        sortedData = state.data.slice().sort((a, b) => {
+          // 數字欄位
+          if (columnType == "number")
+            return a[columnName] * 1 > b[columnName] * 1 ? 1 : -1;
+          // 其他欄位
+          return a[columnName] > b[columnName] ? 1 : -1;
+        });
+      }
 
       return {
         ...state,
-        data: dataDel,
-        open: false,
-        rowIndex: -1,
+        data: sortedData,
+        // 目前排序欄位名
+        sortedColumn: columnName,
+        direction,
       };
-
-    // 關閉表單
-    case "CLOSE":
-      return { ...state, open: false };
-  } // END SWITCH
+  }
 };
