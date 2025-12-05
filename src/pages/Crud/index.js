@@ -46,12 +46,23 @@ export default function index() {
 
   return (
     <>
-      <TableView
+      {/* <TableView
         state={state}
         columns={columns}
         handleAdd={handleAdd}
         handleEdit={handleEdit}
-      />
+      /> */}
+
+      {Array.isArray(state.data) && (
+        <TableView
+          state={state}
+          dispatch={dispatch}
+          columns={columns}
+          handleAdd={handleAdd}
+          handleEdit={handleEdit}          
+        />
+      )}
+
       <EditForm
         columns={columns}
         row={row}

@@ -10,8 +10,9 @@ export default function index() {
         <GridColumn width={4}>
           <Vertical />
         </GridColumn>
-        <GridColumn width={9}>內容</GridColumn>
-        <GridColumn width={3}>C</GridColumn>
+        <GridColumn width={9}>
+          <Basic />
+        </GridColumn>
       </Grid>
 
       {/* <Basic /> */}

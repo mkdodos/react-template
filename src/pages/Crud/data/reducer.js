@@ -1,7 +1,7 @@
 import { API_HOST } from "../../../global/constants";
 import axios from "axios";
-// import { read } from "./pdo";
-import { read } from "./firebase";
+import { read } from "./db/pdo";
+// import { read } from "./db/firebase";
 
 export const reducer = async (state, action) => {
   // console.log(pdo);
@@ -28,9 +28,12 @@ export const reducer = async (state, action) => {
   switch (action.type) {
     // 載入資料
     case "LOAD":
+      // const data = await read({ year: 2022, month: 10 });
+       const data = await read();
+      console.log(data);
       return {
         ...state,
-        data: await read({ year: 2022, month: 10 }),
+        data,
         loading: false,
       };
 

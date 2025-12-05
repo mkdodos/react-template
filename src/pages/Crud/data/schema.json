@@ -17,14 +17,14 @@
     },
     {
       "dataKey": "role",
-      "title": "名稱",
+      "title": "角色",
       "type": "text",
       "editable": "true",
       "viewable": "true"
     },
      {
       "dataKey": "player",
-      "title": "名稱",
+      "title": "姓名",
       "type": "text",
       "editable": "true",
       "viewable": "true"
