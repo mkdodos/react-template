@@ -66,7 +66,7 @@ SELECT
 
 $query = "
 
-SELECT TOP 500 
+SELECT TOP 50 
   工件單號 as id,
 
     報價表.報價單號 as quoteID,

@@ -9,6 +9,13 @@
     },
 
     {
+      "dataKey": "workNote",
+      "title": "名稱",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    },
+    {
       "dataKey": "name",
       "title": "名稱",
       "type": "text",
