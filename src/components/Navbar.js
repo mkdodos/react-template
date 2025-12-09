@@ -26,6 +26,9 @@ export default function Navbar() {
         <Menu.Item as={Link} to="/crud">
           Crud
         </Menu.Item>
+        <Menu.Item as={Link} to="http://localhost:8888/react-template/pdo/">
+          PHP
+        </Menu.Item>
       </Menu>
     </div>
   );

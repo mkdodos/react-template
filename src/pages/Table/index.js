@@ -1,10 +1,12 @@
 import React from "react";
 import BasicTable from "./components/BasicTable";
 import DataTable from "./components/DataTable";
+import TableForm from "./components/TableForm"
 import { TabPane, Tab } from "semantic-ui-react";
 
 export default function index() {
   const panes = [
+     { menuItem: "Form", render: () => <TabPane><TableForm/></TabPane> },
     {
       menuItem: "Basic",
       render: () => (
@@ -22,7 +24,7 @@ export default function index() {
       ),
     },
     
-    { menuItem: "Tab 3", render: () => <TabPane>Tab 3 Content</TabPane> },
+   
   ];
   return (
     <Tab menu={{ fluid: true, vertical: true, tabular: false }} panes={panes} />
