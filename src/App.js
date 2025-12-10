@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Dropdown from "./pages/Dropdown";
 import Table from "./pages/Table";
 import Menu from "./pages/Menu";
 import Button from "./pages/Button";
@@ -18,6 +19,7 @@ export default function App() {
         <Navbar />
         <Divider/>        
         <Routes>
+          <Route path="/dropdown" element={<Dropdown />} />
           <Route path="/table" element={<Table />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/button" element={<Button />} />

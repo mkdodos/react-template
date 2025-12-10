@@ -5,6 +5,9 @@ export default function Navbar() {
   return (
     <div>
       <Menu>
+        <Menu.Item as={Link} to="/dropdown">
+          Dropdown
+        </Menu.Item>
         <Menu.Item as={Link} to="/table">
           表格
         </Menu.Item>

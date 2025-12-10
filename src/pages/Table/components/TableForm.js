@@ -16,6 +16,8 @@ import {
 } from "semantic-ui-react";
 // import People from "../Label";
 
+import Dropdown from "../../Dropdown"
+
 import "./style.css";
 // import { data } from "react-router-dom";
 
@@ -44,15 +46,15 @@ export default function index() {
         <TableRow>
           <TableCell>客戶</TableCell>
           <TableCell>
-            <Input />
+            <Dropdown/>
           </TableCell>
           <TableCell>案號</TableCell>
-          <TableCell>
-            <Input />
+          <TableCell >
+            <Input  />
           </TableCell>
           <TableCell>品名</TableCell>
           <TableCell>
-            <Input />
+            <Input  />
           </TableCell>
           {/* <TableCell>加工說明</TableCell>
           <TableCell>
@@ -67,11 +69,11 @@ export default function index() {
 
           <TableCell>尺寸2</TableCell>
           <TableCell>
-            <Input />
+            <Input  />
           </TableCell>
           <TableCell>尺寸3</TableCell>
           <TableCell>
-            <Input />
+            <Input  />
           </TableCell>
           {/* <TableCell>按鈕</TableCell>
           <TableCell></TableCell> */}
