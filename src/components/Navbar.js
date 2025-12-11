@@ -26,6 +26,9 @@ export default function Navbar() {
         <Menu.Item as={Link} to="/form">
           Form
         </Menu.Item>
+        <Menu.Item as={Link} to="/modal">
+          Modal
+        </Menu.Item>
         <Menu.Item as={Link} to="/crud">
           Crud
         </Menu.Item>

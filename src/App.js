@@ -7,6 +7,7 @@ import Button from "./pages/Button";
 import Grid from "./pages/Grid";
 import Tab from "./pages/Tab";
 import Form from "./pages/Form";
+import Modal from "./pages/Modal";
 
 import Crud from "./pages/Crud"
 
@@ -19,6 +20,7 @@ export default function App() {
         <Navbar />
         <Divider/>        
         <Routes>
+          <Route path="/modal" element={<Modal />} />
           <Route path="/dropdown" element={<Dropdown />} />
           <Route path="/table" element={<Table />} />
           <Route path="/menu" element={<Menu />} />
