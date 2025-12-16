@@ -1,10 +1,12 @@
-import { Table, Button } from "semantic-ui-react";
+import { Table, Button,Icon } from "semantic-ui-react";
+
+import { API_HOST } from "../../../global/constants";
 
 export default function TableView({ state, columns, handleAdd, handleEdit }) {
   const { data, loading } = state;
 
   // 篩選可顯示欄位
-  columns=columns.filter(col=>col.viewable)
+  columns = columns.filter((col) => col.viewable);
 
   return (
     <>
@@ -16,6 +18,7 @@ export default function TableView({ state, columns, handleAdd, handleEdit }) {
                 <Table.HeaderCell key={index}>{col.title}</Table.HeaderCell>
               );
             })}
+            <Table.HeaderCell>圖</Table.HeaderCell>
             <Table.HeaderCell>
               <Button primary onClick={handleAdd} loading={loading}>
                 新增
@@ -33,6 +36,15 @@ export default function TableView({ state, columns, handleAdd, handleEdit }) {
                     <Table.Cell key={index}>{row[col.dataKey]}</Table.Cell>
                   );
                 })}
+                <Table.Cell>
+                  {/* 讀取放在網站以外的資料夾檔案(配合PHP) */}
+                  <a
+                    href={`${API_HOST}/template/readImage.php?id=${row["id"]}`}
+                    target="_blank"
+                  >
+                    <Icon name="image" size="large" />
+                  </a>
+                </Table.Cell>
                 <Table.Cell>
                   <Button onClick={() => handleEdit(row, index)}>編輯</Button>
                 </Table.Cell>

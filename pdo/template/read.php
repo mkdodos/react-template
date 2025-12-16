@@ -35,38 +35,11 @@ if ($where != "")
   $where = " WHERE " . $where;
 
 
-// 查詢字串(日期前後加上#,才能在 access 資料庫查詢)
-$query = "
-
-SELECT  
-  TOP 100
-    工作單號 as id,
-    入廠日 as inDate 
-  FROM 進貨表   
-  $where
-  ORDER BY 入廠日 DESC,工作單號 DESC
-
-"
- ;
-
-
-//  $query = "
-
-// SELECT  
-//   TOP 100
-//     工件單號 as id,
-//     加工說明 as workNote    
-//   FROM 報價工件表   
-//   $where
-  
-
-// "
-//  ;
 
 
 $query = "
 
-SELECT TOP 50 
+SELECT TOP 10 
   工件單號 as id,
 
     報價表.報價單號 as quoteID,

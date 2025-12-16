@@ -16,8 +16,8 @@
       "viewable": "true"
     },
     {
-      "dataKey": "name",
-      "title": "名稱",
+      "dataKey": "quoteID",
+      "title": "報價單號",
       "type": "text",
       "editable": "true",
       "viewable": "true"
