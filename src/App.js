@@ -10,6 +10,7 @@ import Form from "./pages/Form";
 import Modal from "./pages/Modal";
 
 import Crud from "./pages/Crud"
+import MasterDetail from "./pages/MasterDetail"
 
 import { Container, Divider } from "semantic-ui-react";
 
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/tab" element={<Tab />} />
           <Route path="/form" element={<Form />} />
           <Route path="/crud" element={<Crud />} />
+          <Route path="/master-detail" element={<MasterDetail />} />
         </Routes>
       </Container>
     </>
