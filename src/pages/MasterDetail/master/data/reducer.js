@@ -1,4 +1,4 @@
-import { API_HOST } from "../../../global/constants";
+import { API_HOST } from "../../../../global/constants";
 import axios from "axios";
 import { read } from "./db/pdo";
 // import { read } from "./db/firebase";
@@ -40,9 +40,8 @@ export const reducer = async (state, action) => {
       };
 
     case "SHOW_DETAIL":
-      console.log(action)
+      // console.log(action)
       const dataDetail = await read({ quoteID: action.quoteID });
-     console.log(dataDetail)
       return {
         ...state,
         quoteID: action.quoteID,

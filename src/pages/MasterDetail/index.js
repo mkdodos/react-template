@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar";
 import TableView from "./components/TableView";
 import DetailView from "./components/DetailView";
+
+import MasterForm from "./master/components/EditForm";
+
 import useAsyncReducer from "../../utils/asyncReducer";
 import schema from "./data/schema.json";
+import schemaDetail from "./data/schemaDetail.json";
 import { reducer } from "./data/reducer";
 import ScrollTopButton from "../../components/ScrollTopButton";
 
@@ -11,7 +15,7 @@ export default function index() {
   // 預設資料物件
   const initState = {
     data: [], //資料
-    dataDetail:[],
+    dataDetail: [],
     loading: true,
   };
   const [state, dispatch] = useAsyncReducer(reducer, initState);
@@ -43,19 +47,21 @@ export default function index() {
     setRow(row);
   };
 
-
-  
-   const showDetail = (quoteID) => {
+  const showDetail = (quoteID) => {
     // console.log(quoteID);
     dispatch({ type: "SHOW_DETAIL", quoteID });
   };
 
+  const showMasterForm = () => {
+    setMasterFormOpen(true)
+  };
+
+  const [masterFormOpen,setMasterFormOpen]= useState(false)
+
   return (
     <div>
       {/* {state.quoteID} */}
-      <DetailView quoteID={state.quoteID} state={state}
-       columns={columns}
-      />
+
       <SearchBar state={state} dispatch={dispatch} />
       <TableView
         state={state}
@@ -65,8 +71,16 @@ export default function index() {
         showDetail={showDetail}
         // dispatch={dispatch}
       />
-     
-      <ScrollTopButton/>
+      <DetailView
+        quoteID={state.quoteID}
+        state={state}
+        dispatch={dispatch}
+        columns={schemaDetail.columns}
+        showMasterForm={showMasterForm}
+      />
+      {/* <MasterForm data={state.dataDetail[0]} setOpen={setMasterFormOpen} open={masterFormOpen}/> */}
+
+      <ScrollTopButton />
     </div>
   );
 }
