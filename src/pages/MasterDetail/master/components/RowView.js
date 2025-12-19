@@ -12,7 +12,7 @@ import {
 } from "semantic-ui-react";
 
 export default function RowView({ row,handleEdit }) {
-    console.log(row)
+    // console.log(row)
   return (
     <div>
       <Menu>

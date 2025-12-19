@@ -15,6 +15,8 @@ import {
 
 import Master from "../master";
 
+import Detail from "../detail";
+
 export default function DetailView({
   quoteID,
   state,
@@ -68,7 +70,8 @@ export default function DetailView({
         </Menu> */}
       </ModalHeader>
       <ModalContent>
-        <Table celled unstackable>
+        <Detail data={dataDetail}/>
+        {/* <Table celled unstackable>
           <Table.Header>
             <Table.Row>
               {columns.map((col, index) => {
@@ -106,7 +109,7 @@ export default function DetailView({
               );
             })}
           </Table.Body>
-        </Table>
+        </Table> */}
       </ModalContent>
       <ModalActions>
         <Button floated="left" color="black" onClick={() => setOpen(false)}>

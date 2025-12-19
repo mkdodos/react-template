@@ -101,9 +101,11 @@ if ($where != "")
 
 
 
+// 55074
+// 品名 SC\M440轉移軸外徑一次研磨
 
 $query = "
-  SELECT TOP 500 
+  SELECT TOP 46
   工件單號 as id,
 
     報價表.報價單號 as quoteID,

@@ -6,27 +6,79 @@ import {
   Button,
   Header,
   Modal,
+  TableBody,
+  Table,
+  TableCell,
+  TableRow,
+  Input,
 } from "semantic-ui-react";
 
-export default function EditForm({ open, setOpen, data,state,dispatch }) {
-  console.log(open);
+import CustSelect from "../../../../components/dropdown/CustSelect";
+
+export default function EditForm({ row, setRow, setOpen, state, dispatch }) {
+  const handleInputChange = (e) => {
+    setRow({ ...row, [e.target.name]: e.target.value });
+  };
+  const handleCustChange = (e, { value }) => {
+    console.log(value)
+    setRow({ ...row, custID: value,custName: e.target.innerText });
+  };
+  const save = () => {
+    // console.log(row)
+    dispatch({ type: "UPDATE", payload: { row } });
+  };
   return (
     <div>
       <Modal
-        onClose={() => dispatch({type:"CLOSE_EDITFORM"})}
+        onClose={() => dispatch({ type: "CLOSE_EDITFORM" })}
         // onOpen={() => setOpen(true)}
         open={state.isEditFormOpen}
         // trigger={<Button>Show Modal</Button>}
       >
         <ModalHeader>
-          <Header>{data?.quoteID}</Header>
+          <Header>{row?.quoteID}</Header>
         </ModalHeader>
         <ModalContent>
-          <ModalDescription>
+          <Table definition>
+            <TableBody>
+              <TableRow>
+                <TableCell width={4}>客戶</TableCell>
+                <TableCell colSpan="3">
+                  <CustSelect onChange={handleCustChange} value={row?.custID} />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell width={4}>聯絡人</TableCell>
+                <TableCell colSpan="3">
+                  <Input
+                    onChange={handleInputChange}
+                    value={row?.contactor}
+                    type="text"
+                    name="contactor"
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell width={4}>案號</TableCell>
+                <TableCell colSpan="3">
+                  <Input
+                    onChange={handleInputChange}
+                    value={row?.caseNo}
+                    type="text"
+                    name="caseNo"
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* <ModalDescription>
              <Header>{data?.custName}</Header>
               <Header>{data?.contactor}</Header>
             <p>段落文字</p>
-          </ModalDescription>
+          </ModalDescription> */}
         </ModalContent>
         <ModalActions>
           <Button floated="left" color="black" onClick={() => setOpen(false)}>
@@ -36,7 +88,7 @@ export default function EditForm({ open, setOpen, data,state,dispatch }) {
             content="儲存"
             labelPosition="right"
             icon="checkmark"
-            onClick={() => setOpen(false)}
+            onClick={save}
             positive
           />
         </ModalActions>

@@ -28,16 +28,15 @@ export const reducer = async (state, action) => {
     // 載入資料
     case "LOAD":
       // const data = await read({ year: 2022, month: 10 });
-      
-      // const data = await read(action.payload);
+      const data = await read(action.payload);
 
-      // console.log(action.payload);
+      console.log(action.payload);
       // console.log(data);
       return {
         ...state,
-        data: action.payload,
+        data,
         loading: false,
-        // params: action.payload,
+        params: action.payload,
       };
 
     case "SHOW_DETAIL":
@@ -80,35 +79,32 @@ export const reducer = async (state, action) => {
       };
 
     // 新建
-    // case "CREATE":
-    //   response = await axios.post(
-    //     urlCreate,
-    //     {
-    //       ...row,
-    //     },
-    //     { headers }
-    //   );
-    //   // 接收後端傳回的 id , 加入 row 至陣列
-    //   state.data.unshift({ ...row, id: response.data });
-    //   return {
-    //     ...state,
-    //     isEditFormOpen: false,
-    //     editedRowIndex: -1,
-    //   };
+    case "CREATE":
+      response = await axios.post(
+        urlCreate,
+        {
+          ...row,
+        },
+        { headers }
+      );
+      // 接收後端傳回的 id , 加入 row 至陣列
+      state.data.unshift({ ...row, id: response.data });
+      return {
+        ...state,
+        isEditFormOpen: false,
+        editedRowIndex: -1,
+      };
 
     // 更新
     case "UPDATE":
-      // await axios.post(
-      //   urlUpdate,
-      //   {
-      //     ...row,
-      //   },
-      //   { headers }
-      // );
-      // console.log('update')
-      // console.log('update')
-       console.log(row)
-      Object.assign(state.data, row);
+      await axios.post(
+        urlUpdate,
+        {
+          ...row,
+        },
+        { headers }
+      );
+      Object.assign(state.data[state.editedRowIndex], row);
 
       return {
         ...state,
