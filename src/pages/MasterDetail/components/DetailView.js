@@ -34,7 +34,7 @@ export default function DetailView({
     showMasterForm()
   }
 
-  console.log(dataDetail[0])
+  // console.log(dataDetail[0])
   return (
     <Modal
       size="large"
@@ -42,32 +42,7 @@ export default function DetailView({
       open={open}
     >
       <ModalHeader>
-        <Master data={dataDetail[0]}/>
-        {/* <RowView row={dataDetail[0]}/> */}
-        {/* <Menu>
-          <MenuItem>
-            <Header>{dataDetail[0]?.quoteID}</Header>
-          </MenuItem>
-          <MenuItem>
-            <Header>{dataDetail[0]?.custName}</Header>
-          </MenuItem>
-          {dataDetail[0]?.contactor && (
-            <MenuItem>
-              <Header>{dataDetail[0]?.contactor}</Header>
-            </MenuItem>
-          )}
-
-          {dataDetail[0]?.caseNo && (
-            <MenuItem>
-              <Header>{`案號 : ${dataDetail[0]?.caseNo}`}</Header>
-            </MenuItem>
-          )}
-          <MenuItem position="right">
-            <Button icon onClick={() => editMaster(dataDetail[0].quoteID)}>
-              <Icon name="pencil" />
-            </Button>
-          </MenuItem>
-        </Menu> */}
+        <Master state={state} data={dataDetail[0]} dispatch={dispatch}/>       
       </ModalHeader>
       <ModalContent>
         <Detail data={dataDetail}/>

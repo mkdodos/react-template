@@ -30,7 +30,7 @@ export const reducer = async (state, action) => {
       // const data = await read({ year: 2022, month: 10 });
       const data = await read(action.payload);
 
-      console.log(action.payload);
+      // console.log(action.payload);
       // console.log(data);
       return {
         ...state,

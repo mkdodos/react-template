@@ -16,23 +16,25 @@ import {
 import CustSelect from "../../../../components/dropdown/CustSelect";
 
 export default function EditForm({ row, setRow, setOpen, state, dispatch }) {
+  // console.log(state)
   const handleInputChange = (e) => {
     setRow({ ...row, [e.target.name]: e.target.value });
   };
   const handleCustChange = (e, { value }) => {
-    console.log(value)
+    // console.log(value)
     setRow({ ...row, custID: value,custName: e.target.innerText });
   };
   const save = () => {
     // console.log(row)
-    dispatch({ type: "UPDATE", payload: { row } });
+    // dispatch({ type: "UPDATE", payload: { row } });
+    dispatch({ type: "UPDATE_MASTER", payload: { row } });
   };
   return (
     <div>
       <Modal
-        onClose={() => dispatch({ type: "CLOSE_EDITFORM" })}
-        // onOpen={() => setOpen(true)}
-        open={state.isEditFormOpen}
+        onClose={() => dispatch({ type: "CLOSE_MASTERFORM" })}
+       
+        open={state.isMasterFormOpen}
         // trigger={<Button>Show Modal</Button>}
       >
         <ModalHeader>

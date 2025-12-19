@@ -68,8 +68,7 @@ export default function index() {
         columns={columns}
         handleAdd={handleAdd}
         handleEdit={handleEdit}
-        showDetail={showDetail}
-        // dispatch={dispatch}
+        showDetail={showDetail}       
       />
       <DetailView
         quoteID={state.quoteID}

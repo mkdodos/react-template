@@ -14,7 +14,7 @@ import {
 
 
 export default function TableView({ data,columns,handleAdd,handleEdit }) {
-  console.log(data);
+  // console.log(data);
   // 篩選可顯示欄位
   columns = columns.filter((col) => col.viewable);
   return (
@@ -30,7 +30,7 @@ export default function TableView({ data,columns,handleAdd,handleEdit }) {
               );
             })}
 
-            <Table.HeaderCell icon>
+            <Table.HeaderCell>
               <Button color="teal" icon onClick={handleAdd}>
                   <Icon name="plus" />
                 </Button>

@@ -5,11 +5,16 @@ import { read } from "./db/pdo";
 
 export const reducer = async (state, action) => {
   // console.log(pdo);
+  // 參數說明
+  // dataDetail 點選明細鈕,該列報價單號的所有資料
+
   let folder = "masterDetail";
 
   let urlCreate = `${API_HOST}/${folder}/create.php`;
   let urlUpdate = `${API_HOST}/${folder}/update.php`;
   let urlDelete = `${API_HOST}/${folder}/delete.php`;
+
+  let url = "";
 
   let response = null;
 
@@ -30,7 +35,7 @@ export const reducer = async (state, action) => {
       // const data = await read({ year: 2022, month: 10 });
       const data = await read(action.payload);
 
-      console.log(action.payload);
+      // console.log(action.payload);
       // console.log(data);
       return {
         ...state,
@@ -40,22 +45,23 @@ export const reducer = async (state, action) => {
       };
 
     case "SHOW_DETAIL":
-      console.log(action)
+      // console.log(action);
       const dataDetail = await read({ quoteID: action.quoteID });
-     console.log(dataDetail)
+      // dataDetail[0] 做為 master rowview 資料
+      // console.log(dataDetail);
       return {
         ...state,
         quoteID: action.quoteID,
         dataDetail,
-        open:true
+        open: true,
+        // isMasterFormOpen:false
       };
 
     case "CLOSE_DETAIL":
-     
       return {
-        ...state,       
-        open:false
-      };  
+        ...state,
+        open: false,
+      };
 
     // 新增
     case "ADD":
@@ -70,6 +76,21 @@ export const reducer = async (state, action) => {
         ...state,
         editedRowIndex: action.payload.editedRowIndex,
         isEditFormOpen: true,
+      };
+
+    // 編輯
+    case "EDIT_MASTER":
+      return {
+        ...state,
+        editedRowIndex: action.payload.editedRowIndex,
+        isMasterFormOpen: true,
+      };
+
+    // 關閉編輯表單
+    case "CLOSE_MASTERFORM":
+      return {
+        ...state,
+        isMasterFormOpen: false,
       };
 
     // 關閉編輯表單
@@ -93,6 +114,41 @@ export const reducer = async (state, action) => {
       return {
         ...state,
         isEditFormOpen: false,
+        editedRowIndex: -1,
+      };
+
+    // 更新
+    case "UPDATE_MASTER":
+      url = `${API_HOST}/${folder}/updateMaster.php`;
+
+      // console.log(row.quoteID);
+      //  console.log(row);
+
+      response = await axios.post(
+        url,
+        {
+          ...row,
+        },
+        { headers }
+      );
+
+      const dataByQuoteID = state.data.filter(
+        (obj) => obj.quoteID == row.quoteID
+      );
+
+      // console.log(dataByQuoteID);
+
+      dataByQuoteID.map((obj) => {
+        obj.custName = row.custName;
+      });
+
+      // console.log(response.data)
+
+      Object.assign(state.dataDetail[0], row);
+
+      return {
+        ...state,
+        isMasterFormOpen: false,
         editedRowIndex: -1,
       };
 

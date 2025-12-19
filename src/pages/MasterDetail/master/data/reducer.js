@@ -41,7 +41,7 @@ export const reducer = async (state, action) => {
       };
 
     case "SHOW_DETAIL":
-      // console.log(action)
+     
       const dataDetail = await read({ quoteID: action.quoteID });
       return {
         ...state,
@@ -79,22 +79,7 @@ export const reducer = async (state, action) => {
         isEditFormOpen: false,
       };
 
-    // 新建
-    // case "CREATE":
-    //   response = await axios.post(
-    //     urlCreate,
-    //     {
-    //       ...row,
-    //     },
-    //     { headers }
-    //   );
-    //   // 接收後端傳回的 id , 加入 row 至陣列
-    //   state.data.unshift({ ...row, id: response.data });
-    //   return {
-    //     ...state,
-    //     isEditFormOpen: false,
-    //     editedRowIndex: -1,
-    //   };
+    
 
     // 更新
     case "UPDATE":
