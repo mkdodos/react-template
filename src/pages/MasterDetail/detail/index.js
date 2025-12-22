@@ -36,13 +36,14 @@ export default function index({data}) {
   }, []);
 
   const handleAdd = () => {
+    console.log('detail add')
     dispatch({ type: "ADD" });
     setRow(defaultRow);
   };
 
   const handleEdit = (row) => {
-    // console(row)
-    console.log(row)
+    console.log('detail edit')
+    // console.log(row)
     dispatch({ type: "EDIT", payload: { index } });
     // setRow(row);
   };
@@ -52,7 +53,7 @@ export default function index({data}) {
 
   return (
     <div>
-      <TableView data={data} columns={columns} handleEdit={handleEdit} />
+      <TableView handleAdd={handleAdd} data={data} columns={columns} handleEdit={handleEdit} />
       <EditForm  dispatch={dispatch} data={data} state={state} />
     </div>
   );

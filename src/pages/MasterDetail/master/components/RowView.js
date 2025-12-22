@@ -11,7 +11,7 @@ import {
   Header,
 } from "semantic-ui-react";
 
-export default function RowView({ row,handleEdit }) {
+export default function RowView({ row,handleEdit,handleAdd }) {
     // console.log(row)
   return (
     <div>
@@ -37,6 +37,9 @@ export default function RowView({ row,handleEdit }) {
           <Button icon onClick={() => handleEdit(row)}>
             <Icon name="pencil" />
           </Button>
+           {/* <Button primary icon onClick={() => handleAdd()}>
+            <Icon name="plus" />
+          </Button> */}
         </MenuItem>
       </Menu>
     </div>

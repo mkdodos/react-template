@@ -11,6 +11,8 @@ import schemaDetail from "./data/schemaDetail.json";
 import { reducer } from "./data/reducer";
 import ScrollTopButton from "../../components/ScrollTopButton";
 
+import MasterAddForm from "./master/components/AddForm";
+
 export default function index() {
   // 預設資料物件
   const initState = {
@@ -32,14 +34,23 @@ export default function index() {
   // 將其獨立出來處理
   const [row, setRow] = useState(defaultRow);
 
+
+  const defaultMasterRow = {
+    custID: "",
+    caseNo: "",
+    contactor: "",
+  }
+
+  const [rowMaster, setRowMaster] = useState(defaultMasterRow);
+
   useEffect(() => {
     // 讀取資料
     dispatch({ type: "LOAD" });
   }, []);
 
   const handleAdd = () => {
-    dispatch({ type: "ADD" });
-    setRow(defaultRow);
+    dispatch({ type: "ADD_MASTER" });
+    setRowMaster(defaultMasterRow);
   };
 
   const handleEdit = (row, index) => {
@@ -53,23 +64,25 @@ export default function index() {
   };
 
   const showMasterForm = () => {
-    setMasterFormOpen(true)
+    setMasterFormOpen(true);
   };
 
-  const [masterFormOpen,setMasterFormOpen]= useState(false)
+  const [masterFormOpen, setMasterFormOpen] = useState(false);
 
   return (
     <div>
       {/* {state.quoteID} */}
 
       <SearchBar state={state} dispatch={dispatch} />
+
       <TableView
         state={state}
         columns={columns}
         handleAdd={handleAdd}
         handleEdit={handleEdit}
-        showDetail={showDetail}       
+        showDetail={showDetail}
       />
+      <MasterAddForm row={rowMaster} setRow={setRowMaster} state={state} dispatch={dispatch} />
       <DetailView
         quoteID={state.quoteID}
         state={state}
@@ -77,6 +90,12 @@ export default function index() {
         columns={schemaDetail.columns}
         showMasterForm={showMasterForm}
       />
+      {/* {state.quoteID =="" ? (
+        
+      ) : (
+       
+      )} */}
+
       {/* <MasterForm data={state.dataDetail[0]} setOpen={setMasterFormOpen} open={masterFormOpen}/> */}
 
       <ScrollTopButton />

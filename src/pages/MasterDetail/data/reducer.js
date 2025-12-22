@@ -45,16 +45,15 @@ export const reducer = async (state, action) => {
       };
 
     case "SHOW_DETAIL":
-      // console.log(action);
+      // 用傳來的報價單號到後端取得資料
+      // dataDetail 提供給 DetailView
       const dataDetail = await read({ quoteID: action.quoteID });
       // dataDetail[0] 做為 master rowview 資料
-      // console.log(dataDetail);
       return {
         ...state,
         quoteID: action.quoteID,
         dataDetail,
         open: true,
-        // isMasterFormOpen:false
       };
 
     case "CLOSE_DETAIL":
@@ -63,13 +62,6 @@ export const reducer = async (state, action) => {
         open: false,
       };
 
-    // 新增
-    case "ADD":
-      return {
-        ...state,
-        editedRowIndex: -1,
-        isEditFormOpen: true,
-      };
     // 編輯
     case "EDIT":
       return {
@@ -78,11 +70,20 @@ export const reducer = async (state, action) => {
         isEditFormOpen: true,
       };
 
-    // 編輯
-    case "EDIT_MASTER":
+    //
+    case "ADD_MASTER":
       return {
         ...state,
-        editedRowIndex: action.payload.editedRowIndex,
+        isMasterAddFormOpen: true,
+        quoteID:""
+      };
+
+    // 編輯
+    case "EDIT_MASTER":
+      console.log("edit_master");
+      return {
+        ...state,
+        // editedRowIndex: action.payload.editedRowIndex,
         isMasterFormOpen: true,
       };
 
@@ -100,24 +101,32 @@ export const reducer = async (state, action) => {
         isEditFormOpen: false,
       };
 
-    // 新建
-    case "CREATE":
+   
+
+    case "CREATE_MASTER":
+      console.log("create master");
+      console.log(row);
+      url = `${API_HOST}/${folder}/master/create.php`;
       response = await axios.post(
-        urlCreate,
+        url,
         {
           ...row,
         },
         { headers }
       );
-      // 接收後端傳回的 id , 加入 row 至陣列
-      state.data.unshift({ ...row, id: response.data });
+      console.log(response.data);
       return {
         ...state,
-        isEditFormOpen: false,
-        editedRowIndex: -1,
+        isMasterAddFormOpen: false,
+        quoteID:response.data,
+        // 開啟 DetailView
+        open:true,
+        dataDetail:[{...row,quoteID:response.data}]
+        // editedRowIndex: -1,
       };
 
     // 更新
+
     case "UPDATE_MASTER":
       url = `${API_HOST}/${folder}/updateMaster.php`;
 

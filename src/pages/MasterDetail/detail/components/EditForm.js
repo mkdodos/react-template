@@ -3,17 +3,30 @@ import {
   ModalDescription,
   ModalContent,
   ModalActions,
-  Button,
+  
   Header,
+ 
+  Button,
   Modal,
+  TableBody,
+  Table,
+  TableCell,
+  TableRow,
+  Input,
 } from "semantic-ui-react";
 
-export default function EditForm({ open, setOpen, data,state,dispatch }) {
+export default function EditForm({
+  row,
+  setOpen,
+  data,
+  state,
+  dispatch,
+}) {
   // console.log(open);
   return (
     <div>
       <Modal
-        onClose={() => dispatch({type:"CLOSE_EDITFORM"})}
+        onClose={() => dispatch({ type: "CLOSE_EDITFORM" })}
         // onOpen={() => setOpen(true)}
         open={state.isEditFormOpen}
         // trigger={<Button>Show Modal</Button>}
@@ -22,11 +35,72 @@ export default function EditForm({ open, setOpen, data,state,dispatch }) {
           <Header>{data?.quoteID}</Header>
         </ModalHeader>
         <ModalContent>
-          <ModalDescription>
+          <Table definition>
+            <TableBody>
+              <TableRow>
+                <TableCell>品名</TableCell>
+                <TableCell colSpan="3">
+                  <Input
+                    type="text"
+                    name="workName"
+                    value={row.workName}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>尺寸</TableCell>
+                <TableCell width={4}>
+                  <Input
+                    label="Φ"
+                    type="text"
+                    name="size1"
+                    value={row.size1}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+
+                <TableCell width={4}>
+                  <Input
+                    type="text"
+                    name="size2"
+                    value={row.size2}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+                <TableCell width={4}>
+                  <Input
+                    type="text"
+                    name="size3"
+                    value={row.size3}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell width={4}>加工說明</TableCell>
+                <TableCell colSpan="3">
+                  <Input
+                    type="text"
+                    name="workNote"
+                    value={row.workNote}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
+          {/* <ModalDescription>
              <Header>{data?.custName}</Header>
               <Header>{data?.contactor}</Header>
             <p>段落文字</p>
-          </ModalDescription>
+          </ModalDescription> */}
         </ModalContent>
         <ModalActions>
           <Button floated="left" color="black" onClick={() => setOpen(false)}>

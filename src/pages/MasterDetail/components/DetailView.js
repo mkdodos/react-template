@@ -24,15 +24,16 @@ export default function DetailView({
   handleAdd,
   handleEdit,
   dispatch,
-  showMasterForm
+  showMasterForm,
 }) {
+  //  console.log(state)
   const { dataDetail, loading, open } = state;
   // 篩選可顯示欄位
   columns = columns.filter((col) => col.viewable);
-  const editMaster = (quoteID)=>{
-    console.log(quoteID)
-    showMasterForm()
-  }
+  const editMaster = (quoteID) => {
+    console.log(quoteID);
+    showMasterForm();
+  };
 
   // console.log(dataDetail[0])
   return (
@@ -42,49 +43,10 @@ export default function DetailView({
       open={open}
     >
       <ModalHeader>
-        <Master state={state} data={dataDetail[0]} dispatch={dispatch}/>       
+        <Master state={state} data={dataDetail[0]} dispatch={dispatch} />
       </ModalHeader>
       <ModalContent>
-        <Detail data={dataDetail}/>
-        {/* <Table celled unstackable>
-          <Table.Header>
-            <Table.Row>
-              {columns.map((col, index) => {
-                return (
-                  <Table.HeaderCell width={col.width} key={index}>
-                    {col.title}
-                  </Table.HeaderCell>
-                );
-              })}
-
-              <Table.HeaderCell icon>
-                <Button color="teal" icon onClick={handleAdd} loading={loading}>
-                  <Icon name="plus" />
-                </Button>
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-            {dataDetail.map((row, index) => {
-              return (
-                <Table.Row key={row.id}>
-                  {columns.map((col, index) => {
-                    return (
-                      <Table.Cell key={index}>{row[col.dataKey]}</Table.Cell>
-                    );
-                  })}
-
-                  <Table.Cell width={1}>
-                    <Button icon onClick={() => showDetail(row.quoteID)}>
-                      <Icon name="pencil" />
-                    </Button>
-                  </Table.Cell>
-                </Table.Row>
-              );
-            })}
-          </Table.Body>
-        </Table> */}
+        <Detail data={dataDetail} />
       </ModalContent>
       <ModalActions>
         <Button floated="left" color="black" onClick={() => setOpen(false)}>
