@@ -105,7 +105,7 @@ if ($where != "")
 // 品名 SC\M440轉移軸外徑一次研磨
 
 $query = "
-  SELECT TOP 46
+  SELECT TOP 51
   工件單號 as id,
 
     報價表.報價單號 as quoteID,
@@ -130,13 +130,12 @@ $query = "
  
 ";
 
-// FROM 報價表 INNER JOIN 報價工件表 ON 報價表.報價單號 = 報價工件表.報價單號
-
 
 // 轉成 BIG5 才能在 access 查詢
 $query = mb_convert_encoding($query, "BIG5", "UTF-8");
 
 // echo $query;
+// return;
 
 // 執行查詢
 $sth = $db->prepare($query);

@@ -46,7 +46,7 @@ export default function SearchBar({ state, dispatch }) {
     const size3 = size3Ref.current.inputRef.current.value;
     const quoteID = quoteIdRef.current.inputRef.current.value;
     const caseNo = caseNoRef.current.inputRef.current.value;
-
+    // dispatch({ type: "LOADING" });
     dispatch({
       type: "LOAD",
       payload: {
@@ -112,13 +112,17 @@ export default function SearchBar({ state, dispatch }) {
               <Button
                 icon
                 primary
-                // loading={state.loading}
+                loading={state.loading}
                 onClick={handleQuery}
               >
                 <Icon name="search" /> 查詢
               </Button>
             </TableCell>
-            <TableCell></TableCell>
+            <TableCell>
+              {/* <Button color="teal" loading={state.loading} onClick={handleAdd}>
+              <Icon name="plus" /> 新增
+            </Button> */}
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>

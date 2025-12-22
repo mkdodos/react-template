@@ -19,8 +19,6 @@ import CustSelect from "../../../../components/dropdown/CustSelect";
 export default function AddForm({ row,setRow, setOpen, state, dispatch }) {
   // const [row, setRow] = useState({custID:'',caseNo:'',contactor:''});
 
-  console.log(state)
-
   const handleInputChange = (e) => {
     setRow({ ...row, [e.target.name]: e.target.value });
   };
