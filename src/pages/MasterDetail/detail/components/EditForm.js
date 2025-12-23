@@ -3,9 +3,7 @@ import {
   ModalDescription,
   ModalContent,
   ModalActions,
-  
   Header,
- 
   Button,
   Modal,
   TableBody,
@@ -17,13 +15,12 @@ import {
 
 export default function EditForm({
   row,
+  setRow,
   setOpen,
   data,
   state,
   dispatch,
 }) {
-  
-
   const handleInputChange = (e) => {
     setRow({ ...row, [e.target.name]: e.target.value });
   };
@@ -31,7 +28,7 @@ export default function EditForm({
   return (
     <div>
       <Modal
-        onClose={() => dispatch({ type: "CLOSE_EDITFORM" })}
+        onClose={() => dispatch({ type: "CLOSE_DETAILFORM" })}
         // onOpen={() => setOpen(true)}
         open={state.isDetailFormOpen}
         // trigger={<Button>Show Modal</Button>}
@@ -100,12 +97,6 @@ export default function EditForm({
               </TableRow>
             </TableBody>
           </Table>
-
-          {/* <ModalDescription>
-             <Header>{data?.custName}</Header>
-              <Header>{data?.contactor}</Header>
-            <p>段落文字</p>
-          </ModalDescription> */}
         </ModalContent>
         <ModalActions>
           <Button floated="left" color="black" onClick={() => setOpen(false)}>
@@ -115,7 +106,9 @@ export default function EditForm({
             content="儲存"
             labelPosition="right"
             icon="checkmark"
-            onClick={() => setOpen(false)}
+            onClick={() =>
+              dispatch({ type: "CREATE_DETAIL", payload: { row } })
+            }
             positive
           />
         </ModalActions>

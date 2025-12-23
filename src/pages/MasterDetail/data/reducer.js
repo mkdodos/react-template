@@ -67,11 +67,37 @@ export const reducer = async (state, action) => {
         dataMasterRow: { ...row, quoteID: response.data },
       };
 
+    case "CREATE_DETAIL":
+      console.log("create detail");
+      console.log(row);
+      url = `${API_HOST}/${folder}/detail/create.php`;
+      response = await axios.post(
+        url,
+        {
+          ...row,
+          quoteID:state.quoteID
+        },
+        { headers }
+      );
+
+      return {
+        ...state,
+        isDetailFormOpen: false,
+        dataDetail: [{ ...row,quoteID:state.quoteID }],
+      };
+
     // 關閉編輯表單
     case "CLOSE_MASTERFORM":
       return {
         ...state,
         isMasterAddFormOpen: false,
+      };
+
+    // 關閉編輯表單
+    case "CLOSE_DETAILFORM":
+      return {
+        ...state,
+        isDetailFormOpen: false,
       };
 
     // 關閉
