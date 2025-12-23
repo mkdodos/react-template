@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   ModalHeader,
   ModalDescription,
@@ -16,25 +15,29 @@ import {
 
 import CustSelect from "../../../../components/dropdown/CustSelect";
 
-export default function AddForm({ row,setRow, setOpen, state, dispatch }) {
-  
+export default function EditForm({ row, setRow, setOpen, state, dispatch }) {
+  console.log(state)
+  // return;
   const handleInputChange = (e) => {
     setRow({ ...row, [e.target.name]: e.target.value });
   };
-  const handleCustChange = (e, { value }) => {    
-    setRow({ ...row, custID: value, custName: e.target.innerText });
+  const handleCustChange = (e, { value }) => {
+    // console.log(value)
+    setRow({ ...row, custID: value,custName: e.target.innerText });
   };
-  const save = () => {
-    dispatch({ type: "CREATE_MASTER", payload: { row } });
+  const save = () => {    
+    dispatch({ type: "UPDATE_MASTER", payload: { row } });
   };
   return (
     <div>
       <Modal
         onClose={() => dispatch({ type: "CLOSE_MASTERFORM" })}
-        open={state.isMasterAddFormOpen}       
+       
+        open={state.isMasterEditFormOpen}
+        // trigger={<Button>Show Modal</Button>}
       >
         <ModalHeader>
-          <Header>新增報價</Header>
+          <Header>{row?.quoteID}</Header>
         </ModalHeader>
         <ModalContent>
           <Table definition>
@@ -71,6 +74,12 @@ export default function AddForm({ row,setRow, setOpen, state, dispatch }) {
               </TableRow>
             </TableBody>
           </Table>
+
+          {/* <ModalDescription>
+             <Header>{data?.custName}</Header>
+              <Header>{data?.contactor}</Header>
+            <p>段落文字</p>
+          </ModalDescription> */}
         </ModalContent>
         <ModalActions>
           <Button floated="left" color="black" onClick={() => setOpen(false)}>

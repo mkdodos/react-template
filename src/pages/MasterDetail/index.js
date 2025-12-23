@@ -1,17 +1,18 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useAsyncReducer from "../../utils/asyncReducer";
 import schema from "./data/schema.json";
 import { reducer } from "./data/reducer";
 import SearchBar from "./components/SearchBar";
 import TableView from "./components/TableView";
 
-import MasterAddForm from "./master/components/AddForm"
-
+import MasterAddForm from "./master/components/AddForm";
+import DetailView from "./components/DetailView";
 
 export default function index() {
   // 預設資料物件
   const initState = {
     data: [], //資料
+    dataDetail:[],
     loading: true,
   };
 
@@ -23,18 +24,18 @@ export default function index() {
   }, []);
 
   // 欄位預設值
-  const defaultRow = {};
-  const { columns } = schema;
-  columns.map((obj) => {
-    defaultRow[obj.dataKey] = "";
-  });
- 
-  
-  // const [row, setRow] = useState(defaultRow);
+
+  const defaultMasterRow = {
+    custID: "",
+    caseNo: "",
+    contactor: "",
+  };
+
+  const [masterRow, setMasterRow] = useState(defaultMasterRow);
 
   const handleAdd = () => {
     dispatch({ type: "ADD_MASTER" });
-    // setRow(defaultRow);
+    setMasterRow(defaultMasterRow);
   };
 
   // const handleEdit = (row, index) => {
@@ -45,8 +46,14 @@ export default function index() {
   return (
     <>
       <SearchBar dispatch={dispatch} />
-      <TableView state={state} columns={columns} handleAdd={handleAdd}/>
-      <MasterAddForm state={state}/>
+      <TableView state={state} columns={schema.columns} handleAdd={handleAdd} />
+      <MasterAddForm
+        state={state}
+        dispatch={dispatch}
+        row={masterRow}
+        setRow={setMasterRow}
+      />
+      <DetailView state={state} dispatch={dispatch}  />
     </>
   );
 }
