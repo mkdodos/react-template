@@ -35,7 +35,7 @@ export default function EditForm({
   };
 
   const destroy = () => {
-    dispatch({ type: "DESTROY_DETAIL", payload: {  row } });
+    dispatch({ type: "DESTROY_DETAIL", payload: { row } });
   };
 
   return (
@@ -47,10 +47,7 @@ export default function EditForm({
         // trigger={<Button>Show Modal</Button>}
       >
         <ModalHeader>
-          <Header>
-            {data?.quoteID}
-            {state.editedRowIndex}
-          </Header>
+          <Header>編輯</Header>
         </ModalHeader>
         <ModalContent>
           <Table definition>
@@ -123,7 +120,7 @@ export default function EditForm({
                   />
                 </TableCell>
               </TableRow>
-              
+
               <TableRow>
                 <TableCell width={4}>成交價</TableCell>
                 <TableCell colSpan="3">

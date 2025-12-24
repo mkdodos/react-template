@@ -134,10 +134,17 @@ export const reducer = async (state, action) => {
       };
 
     // 關閉編輯表單
-    case "CLOSE_MASTERFORM":
+    case "CLOSE_MASTERADDFORM":
       return {
         ...state,
         isMasterAddFormOpen: false,
+      };
+
+       // 關閉編輯表單
+    case "CLOSE_MASTEREDITFORM":
+      return {
+        ...state,
+        isMasterEditFormOpen: false,
       };
 
     /**************** DETAIL *******************/

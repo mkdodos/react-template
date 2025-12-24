@@ -13,6 +13,7 @@ export default function index({ dispatch, data, state }) {
 
   const handleEdit = (row) => {
     dispatch({ type: "EDIT_MASTER", payload: { index } });
+    setRow(row)
   };
   return (
     <div>

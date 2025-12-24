@@ -30,7 +30,7 @@ export default function AddForm({ row,setRow, setOpen, state, dispatch }) {
   return (
     <div>
       <Modal
-        onClose={() => dispatch({ type: "CLOSE_MASTERFORM" })}
+        // onClose={() => dispatch({ type: "CLOSE_MASTERADDFORM" })}
         open={state.isMasterAddFormOpen}       
       >
         <ModalHeader>
@@ -73,13 +73,15 @@ export default function AddForm({ row,setRow, setOpen, state, dispatch }) {
           </Table>
         </ModalContent>
         <ModalActions>
-          <Button floated="left" color="black" onClick={() => setOpen(false)}>
+          <Button
+            floated="left"
+            color="black"
+            onClick={() => dispatch({ type: "CLOSE_MASTERADDFORM" })}
+          >
             取消
           </Button>
           <Button
-            content="儲存"
-            labelPosition="right"
-            icon="checkmark"
+            content="儲存"          
             onClick={save}
             positive
           />

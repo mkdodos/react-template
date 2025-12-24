@@ -16,23 +16,22 @@ import {
 import CustSelect from "../../../../components/dropdown/CustSelect";
 
 export default function EditForm({ row, setRow, setOpen, state, dispatch }) {
-  console.log(state)
+  // console.log(state);
   // return;
   const handleInputChange = (e) => {
     setRow({ ...row, [e.target.name]: e.target.value });
   };
   const handleCustChange = (e, { value }) => {
     // console.log(value)
-    setRow({ ...row, custID: value,custName: e.target.innerText });
+    setRow({ ...row, custID: value, custName: e.target.innerText });
   };
-  const save = () => {    
+  const save = () => {
     dispatch({ type: "UPDATE_MASTER", payload: { row } });
   };
   return (
     <div>
       <Modal
-        onClose={() => dispatch({ type: "CLOSE_MASTERFORM" })}
-       
+        // onClose={() => dispatch({ type: "CLOSE_MASTERFORM" })}
         open={state.isMasterEditFormOpen}
         // trigger={<Button>Show Modal</Button>}
       >
@@ -82,16 +81,14 @@ export default function EditForm({ row, setRow, setOpen, state, dispatch }) {
           </ModalDescription> */}
         </ModalContent>
         <ModalActions>
-          <Button floated="left" color="black" onClick={() => setOpen(false)}>
+          <Button
+            floated="left"
+            color="black"
+            onClick={() => dispatch({ type: "CLOSE_MASTEREDITFORM" })}
+          >
             取消
           </Button>
-          <Button
-            content="儲存"
-            labelPosition="right"
-            icon="checkmark"
-            onClick={save}
-            positive
-          />
+          <Button content="儲存" onClick={save}  positive />
         </ModalActions>
       </Modal>
     </div>

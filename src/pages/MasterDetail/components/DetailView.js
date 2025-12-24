@@ -40,7 +40,7 @@ export default function DetailView({
   return (
     <Modal
       size="large"
-      onClose={() => dispatch({ type: "CLOSE_DETAILVIEW" })}
+      // onClose={() => dispatch({ type: "CLOSE_DETAILVIEW" })}
       open={isDetailViewOpen}
     >
       <ModalHeader>
@@ -55,6 +55,7 @@ export default function DetailView({
         </Button> */}
         <Button
           content="關閉"
+          // floated="left"
           secondary      
           onClick={() => dispatch({ type: "CLOSE_DETAILVIEW" }) }
           
