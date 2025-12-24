@@ -2,15 +2,19 @@
 $obj = json_decode(file_get_contents('php://input'));
 
 // create update 共用
-// 客戶,案號,聯絡人
+
+
 $quoteID = empty($obj->quoteID)?'Null':"'".$obj->quoteID."'";
-$custID = empty($obj->custID)?'Null':"'".$obj->custID."'";
-$caseNo = empty($obj->caseNo)?'Null':"'".$obj->caseNo."'";
-$contactor = empty($obj->contactor)?'Null':"'".$obj->contactor."'";
-$presentor = empty($obj->presentor)?'Null':"'".$obj->presentor."'";
+
+$workNote = empty($obj->workNote)?'Null':"'".$obj->workNote."'";
+$workName = empty($obj->workName)?'Null':"'".$obj->workName."'";
 
 $size1 = empty($obj->size1)?'Null':"'".$obj->size1."'";
 $size2 = empty($obj->size2)?'Null':"'".$obj->size2."'";
 $size3 = empty($obj->size3)?'Null':"'".$obj->size3."'";
+
+$qty = empty($obj->qty)?'Null':"'".$obj->qty."'";
+$price = empty($obj->price)?'Null':"'".$obj->price."'";
+$donePrice = empty($obj->donePrice)?'Null':"'".$obj->donePrice."'";
 
 ?>

@@ -64,14 +64,6 @@
       "width": "4"
     },
     {
-      "dataKey": "price",
-      "title": "單價",
-      "type": "number",
-      "editable": "true",
-      "viewable": "true",
-      "width": "1"
-    },
-    {
       "dataKey": "qty",
       "title": "數量",
       "type": "number",
@@ -79,6 +71,15 @@
       "viewable": "true",
       "width": "1"
     },
+    {
+      "dataKey": "price",
+      "title": "單價",
+      "type": "number",
+      "editable": "true",
+      "viewable": "true",
+      "width": "1"
+    },
+    
 
     {
       "dataKey": "donePrice",

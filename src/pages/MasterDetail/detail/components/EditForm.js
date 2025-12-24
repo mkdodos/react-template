@@ -25,6 +25,19 @@ export default function EditForm({
     setRow({ ...row, [e.target.name]: e.target.value });
   };
 
+  const save = (index) => {
+    console.log(state.editedRowIndex);
+    if (state.editedRowIndex == -1) {
+      dispatch({ type: "CREATE_DETAIL", payload: { row } });
+    } else {
+      dispatch({ type: "UPDATE_DETAIL", payload: { row, index } });
+    }
+  };
+
+  const destroy = () => {
+    dispatch({ type: "DESTROY_DETAIL", payload: {  row } });
+  };
+
   return (
     <div>
       <Modal
@@ -34,7 +47,10 @@ export default function EditForm({
         // trigger={<Button>Show Modal</Button>}
       >
         <ModalHeader>
-          <Header>{data?.quoteID}</Header>
+          <Header>
+            {data?.quoteID}
+            {state.editedRowIndex}
+          </Header>
         </ModalHeader>
         <ModalContent>
           <Table definition>
@@ -84,6 +100,43 @@ export default function EditForm({
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell width={4}>數量</TableCell>
+                <TableCell colSpan="3">
+                  <Input
+                    type="number"
+                    name="qty"
+                    value={row.qty}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell width={4}>單價</TableCell>
+                <TableCell colSpan="3">
+                  <Input
+                    type="number"
+                    name="price"
+                    value={row.price}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+              
+              <TableRow>
+                <TableCell width={4}>成交價</TableCell>
+                <TableCell colSpan="3">
+                  <Input
+                    type="number"
+                    name="donePrice"
+                    value={row.donePrice}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell width={4}>加工說明</TableCell>
                 <TableCell colSpan="3">
                   <Input
@@ -99,18 +152,10 @@ export default function EditForm({
           </Table>
         </ModalContent>
         <ModalActions>
-          <Button floated="left" color="black" onClick={() => setOpen(false)}>
-            取消
+          <Button floated="left" color="red" onClick={destroy}>
+            刪除
           </Button>
-          <Button
-            content="儲存"
-            labelPosition="right"
-            icon="checkmark"
-            onClick={() =>
-              dispatch({ type: "CREATE_DETAIL", payload: { row } })
-            }
-            positive
-          />
+          <Button content="儲存" onClick={save} positive />
         </ModalActions>
       </Modal>
     </div>

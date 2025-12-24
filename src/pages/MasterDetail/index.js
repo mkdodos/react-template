@@ -38,6 +38,8 @@ export default function index() {
     setMasterRow(defaultMasterRow);
   };
 
+   
+
   // const handleEdit = (row, index) => {
   //   dispatch({ type: "EDIT", payload: { index } });
   //   setRow(row);
@@ -46,7 +48,7 @@ export default function index() {
   return (
     <>
       <SearchBar dispatch={dispatch} />
-      <TableView state={state} columns={schema.columns} handleAdd={handleAdd} />
+      <TableView state={state} dispatch={dispatch} columns={schema.columns} handleAdd={handleAdd} />
       <MasterAddForm
         state={state}
         dispatch={dispatch}

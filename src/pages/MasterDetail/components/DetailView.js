@@ -50,15 +50,14 @@ export default function DetailView({
         <Detail data={dataDetail} dispatch={dispatch} state={state}  />
       </ModalContent>
       <ModalActions>
-        <Button floated="left" color="black" onClick={() => setOpen(false)}>
+        {/* <Button floated="left" color="black" onClick={() => setOpen(false)}>
           取消
-        </Button>
+        </Button> */}
         <Button
-          content="儲存"
-          labelPosition="right"
-          icon="checkmark"
-          onClick={() => setOpen(false)}
-          positive
+          content="關閉"
+          secondary      
+          onClick={() => dispatch({ type: "CLOSE_DETAILVIEW" }) }
+          
         />
       </ModalActions>
     </Modal>

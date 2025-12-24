@@ -1,25 +1,28 @@
 <?php
 header("Access-Control-Allow-Origin:*");
+include_once("./params.php");
 
 $connectionString = "odbc:master";
 $db = new PDO($connectionString);
 
 $obj = json_decode(file_get_contents('php://input'));
 
-$table = "報價表";
-$id = "報價單號";
+$table = "報價工件表";
+$id = "工件單號";
 
 
-$contactor = empty($obj->contactor)?'Null':"'".$obj->contactor."'";
-$caseNo = empty($obj->caseNo)?'Null':"'".$obj->caseNo."'";
-$custID = empty($obj->custID)?'Null':"'".$obj->custID."'";
 
 
 $sql = " UPDATE $table SET 
-  客戶編號=$custID,
-  客戶案號=$caseNo,
-  聯絡人=$contactor  
-  WHERE $id='$obj->quoteID'";
+  品名=$workName,
+  加工說明=$workNote,
+  尺寸1=$size1,
+  尺寸2=$size2,
+  尺寸3=$size3,
+  數量=$qty,
+  單價=$price,
+  成交價=$donePrice
+  WHERE $id=$obj->id";
 
 echo $sql;
 

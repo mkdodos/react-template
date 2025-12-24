@@ -1,10 +1,15 @@
 import { Table, Button, Icon } from "semantic-ui-react";
 import { API_HOST } from "../../../global/constants";
 
-export default function TableView({ state, columns, handleAdd, showDetail }) {
+export default function TableView({ state,dispatch ,columns, handleAdd  }) {
   const { data, loading } = state;
   // 篩選可顯示欄位
   columns = columns.filter((col) => col.viewable);
+
+  const showDetail = (quoteID) => {
+    // console.log(quoteID);
+    dispatch({ type: "SHOW_DETAIL", quoteID });
+  };
 
   return (
     <Table celled unstackable>

@@ -15,12 +15,18 @@ export default function index({ dispatch, data, state }) {
 
   const handleAdd = () => {
     dispatch({ type: "ADD_DETAIL" });
-    // setMasterRow(defaultMasterRow);
+    setRow(defaultRow);
   };
+
+  const handleEdit = (row,index) => {
+    setRow(row)
+    dispatch({ type: "EDIT_DETAIL", payload: { row,index } });
+  };
+
   return (
     <div>
-      {JSON.stringify(data)}
-      <TableView handleAdd={handleAdd} data={data} columns={schema.columns} />
+      {/* {JSON.stringify(data)} */}
+      <TableView handleAdd={handleAdd} handleEdit={handleEdit} data={data} columns={schema.columns} />
       <EditForm row={row} setRow={setRow} dispatch={dispatch} state={state} />
     </div>
   );
