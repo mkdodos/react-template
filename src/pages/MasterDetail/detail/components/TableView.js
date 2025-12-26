@@ -30,7 +30,7 @@ export default function TableView({ data, columns, handleAdd, handleEdit }) {
               );
             })}
 
-            <Table.HeaderCell>
+            <Table.HeaderCell width={1}>
               <Button color="teal" icon onClick={handleAdd}>
                 <Icon name="plus" />
               </Button>

@@ -108,17 +108,16 @@ export default function SearchBar({ state, dispatch }) {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>
+            <TableCell colSpan="8">
               <Button
                 icon
-                primary
-                // loading={state.loading}
-                onClick={handleQuery}
-              >
+                color="pink"
+                floated="right"
+                onClick={handleQuery}              >
                 <Icon name="search" /> 查詢
               </Button>
             </TableCell>
-            <TableCell></TableCell>
+            
           </TableRow>
         </TableBody>
       </Table>

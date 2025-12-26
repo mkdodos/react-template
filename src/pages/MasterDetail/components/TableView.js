@@ -41,7 +41,7 @@ export default function TableView({ state,dispatch ,columns, handleAdd  }) {
               <Table.Cell>
                 {/* 讀取放在網站以外的資料夾檔案(配合PHP) */}
                 <a
-                  href={`${API_HOST}/template/readImage.php?id=${row["id"]}`}
+                  href={`${API_HOST}/template/readImage.php?quoteID=${row["quoteID"]}`}
                   target="_blank"
                 >
                   <Icon name="image" size="large" />

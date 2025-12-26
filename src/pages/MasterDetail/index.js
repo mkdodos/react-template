@@ -7,6 +7,7 @@ import TableView from "./components/TableView";
 
 import MasterAddForm from "./master/components/AddForm";
 import DetailView from "./components/DetailView";
+import ScrollTopButton from "../../components/ScrollTopButton";
 
 export default function index() {
   // 預設資料物件
@@ -56,6 +57,8 @@ export default function index() {
         setRow={setMasterRow}
       />
       <DetailView state={state} dispatch={dispatch}  />
+      <ScrollTopButton/>
+      
     </>
   );
 }

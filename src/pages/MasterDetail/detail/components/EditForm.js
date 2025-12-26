@@ -35,6 +35,7 @@ export default function EditForm({
   };
 
   const destroy = () => {
+    if (!confirm("確定刪除嗎?")) return;
     dispatch({ type: "DESTROY_DETAIL", payload: { row } });
   };
 

@@ -83,11 +83,11 @@
 
     {
       "dataKey": "donePrice",
-      "title": "成交價",
+      "title": "成交",
       "type": "number",
       "editable": "true",
       "viewable": "true",
-      "width": "1"
+      "width": "2"
     },
     {
       "dataKey": "caseNo",
