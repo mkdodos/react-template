@@ -3,14 +3,28 @@
     {
       "dataKey": "id",
       "title": "代號",
-      "type": "text",     
+      "type": "text",
       "viewable": "true"
     },
 
     {
-      "dataKey": "size1",
-      "title": "尺寸",
+      "dataKey": "workName",
+      "title": "品名",
       "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    },
+    {
+      "dataKey": "size1",
+      "title": "尺寸1",
+      "type": "number",
+      "editable": "true",
+      "viewable": "true"
+    },
+    {
+      "dataKey": "size2",
+      "title": "尺寸2",
+      "type": "number",
       "editable": "true",
       "viewable": "true"
     }

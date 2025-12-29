@@ -1,6 +1,8 @@
-import { Form, Button, Modal,Dropdown } from "semantic-ui-react";
+import { Form, Button, Modal, Dropdown } from "semantic-ui-react";
+import DropdownCom from "./DropdownCom";
 
 export default function EditForm({ columns, state, dispatch, row, setRow }) {
+  console.log(state);
   // 篩選可編輯欄位
   columns = columns.filter((col) => col.editable);
   // 組合每一列 group
@@ -21,59 +23,11 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
     setRow({ ...row, [e.target.name]: e.target.value });
   };
 
-  const handlePlayerChange = (e, { value }) => {
-    setRow({ ...row, player: value });
+  const handleWorkNameChange = (e, { value }) => {
+    setRow({ ...row, workName: value });
   };
 
-  const handleRoleChange = (e, { value }) => {
-    setRow({ ...row, role: value });
-  };
 
-  const players = [
-    {
-      key: "1",
-      text: "馬克",
-      value: "馬克",
-    },
-    {
-      key: "2",
-      text: "宜君",
-      value: "宜君",
-    },
-    {
-      key: "3",
-      text: "愷軒",
-      value: "愷軒",
-    },
-    {
-      key: "4",
-      text: "欣妤",
-      value: "欣妤",
-    },
-  ];
-
-  const roles = [
-    {
-      key: "1",
-      text: "勞工",
-      value: "labor",
-    },
-    {
-      key: "2",
-      text: "中產",
-      value: "middle",
-    },
-    {
-      key: "3",
-      text: "資本",
-      value: "cap",
-    },
-    {
-      key: "4",
-      text: "政府",
-      value: "gov",
-    },
-  ];
 
   // 組合 group 中的 field
   const formFields = (index, columnsPerRow) => {
@@ -81,24 +35,24 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
     columns.slice(index, index + columnsPerRow).map((col, index) => {
       // 依不同欄位顯示不同輸入控制項
       switch (col.dataKey) {
-        case "player":
+        case "workName":
           fields.push(
             <Form.Field key={index}>
               <label>{col.title}</label>
-              <Dropdown
+              <DropdownCom value={row.workName} state={state} onChange={handleWorkNameChange}/>
+              {/* <Dropdown
                 selection
                 search
                 onChange={handlePlayerChange}
                 placeholder="選擇資料"
                 options={players}
                 value={row.player}
-              />
+              /> */}
             </Form.Field>
           );
           return;
 
-
-          case "role":
+        case "role":
           fields.push(
             <Form.Field key={index}>
               <label>{col.title}</label>
@@ -138,7 +92,10 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
         open={state.isEditFormOpen}
         closeIcon
       >
-        <Modal.Header>編輯</Modal.Header>
+        <Modal.Header>
+          編輯
+         
+        </Modal.Header>
         <Modal.Content>
           <Form>{formGroups(2)}</Form>
         </Modal.Content>

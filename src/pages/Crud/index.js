@@ -5,6 +5,7 @@ import { reducer } from "./data/reducer";
 // import { reducer } from "./data/reducerPdo";
 import TableView from "./components/TableView";
 import EditForm from "./components/EditForm";
+import DropdownCom from "./components/DropdownCom";
 
 export default function index() {
   // 預設資料物件
@@ -46,12 +47,7 @@ export default function index() {
 
   return (
     <>
-      {/* <TableView
-        state={state}
-        columns={columns}
-        handleAdd={handleAdd}
-        handleEdit={handleEdit}
-      /> */}
+      <DropdownCom state={state} />
 
       {Array.isArray(state.data) && (
         <TableView
@@ -59,7 +55,7 @@ export default function index() {
           dispatch={dispatch}
           columns={columns}
           handleAdd={handleAdd}
-          handleEdit={handleEdit}          
+          handleEdit={handleEdit}
         />
       )}
 
