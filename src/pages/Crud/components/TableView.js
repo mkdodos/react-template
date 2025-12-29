@@ -1,6 +1,7 @@
-import { Table, Button,Icon } from "semantic-ui-react";
+import { Table, Button, Icon } from "semantic-ui-react";
 
 import { API_HOST } from "../../../global/constants";
+import { v4 as uuidv4 } from "uuid";
 
 export default function TableView({ state, columns, handleAdd, handleEdit }) {
   const { data, loading } = state;
@@ -18,7 +19,7 @@ export default function TableView({ state, columns, handleAdd, handleEdit }) {
                 <Table.HeaderCell key={index}>{col.title}</Table.HeaderCell>
               );
             })}
-            <Table.HeaderCell>圖</Table.HeaderCell>
+           
             <Table.HeaderCell>
               <Button primary onClick={handleAdd} loading={loading}>
                 新增
@@ -28,25 +29,17 @@ export default function TableView({ state, columns, handleAdd, handleEdit }) {
         </Table.Header>
 
         <Table.Body>
-          {data.map((row, index) => {
+          {data.map((row,rowIndex) => {
             return (
-              <Table.Row key={row.id}>
+              <Table.Row key={uuidv4()}>
                 {columns.map((col, index) => {
                   return (
-                    <Table.Cell key={index}>{row[col.dataKey]}</Table.Cell>
+                    <Table.Cell key={uuidv4()}>{row[col.dataKey]}</Table.Cell>
                   );
                 })}
+               
                 <Table.Cell>
-                  {/* 讀取放在網站以外的資料夾檔案(配合PHP) */}
-                  <a
-                    href={`${API_HOST}/template/readImage.php?id=${row["id"]}`}
-                    target="_blank"
-                  >
-                    <Icon name="image" size="large" />
-                  </a>
-                </Table.Cell>
-                <Table.Cell>
-                  <Button onClick={() => handleEdit(row, index)}>編輯</Button>
+                  <Button onClick={() => handleEdit(row, rowIndex)}>編輯</Button>
                 </Table.Cell>
               </Table.Row>
             );

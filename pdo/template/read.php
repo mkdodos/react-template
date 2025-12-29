@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin:*");
 header("Content-Type:text/html; charset=big5");
 // 建立連線,傳回PDO物件
-$db = new PDO( "odbc:master");
+$db = new PDO("odbc:master");
 
 // 接收參數
 $year = isset($_GET["year"]) ? $_GET["year"] : "";
@@ -18,7 +18,7 @@ if ($year) {
   if ($where != "") {
     $where .= " AND ";
   }
- $where.= " Year([入廠日])=".$year;
+  $where .= " Year([入廠日])=" . $year;
 }
 
 
@@ -26,7 +26,7 @@ if ($month) {
   if ($where != "") {
     $where .= " AND ";
   }
- $where.= " Month([入廠日])=".$month;
+  $where .= " Month([入廠日])=" . $month;
 }
 
 
@@ -39,27 +39,11 @@ if ($where != "")
 
 $query = "
 
-SELECT TOP 10 
-  工件單號 as id,
+SELECT TOP 10 報價工件表.工件單號 as id, 報價工件表.尺寸1 as size1,
+尺寸2 as size2
+FROM 報價工件表 ORDER BY 工件單號  DESC;
 
-    報價表.報價單號 as quoteID,
-        報價表.客戶編號 as custID ,
-        客戶名稱 as custName ,
-        尺寸1 as size1,
-        尺寸2 as size2,
-        尺寸3 as size3,
-        IIf([尺寸1]>0,'Φ' & [尺寸1] & '*') & [尺寸2] & IIf([尺寸3]>0,'*' & [尺寸3]) as size,
-        品名 as workName,
-        加工說明 as workNote,
-        單價 as price,
-        成交價 as donePrice,
-        數量 as qty,
-        成交日期 as doneDate,        
-        客戶案號 as caseNo
-        
-  FROM (報價表 INNER JOIN 報價工件表 ON 報價表.報價單號 = 報價工件表.報價單號) INNER JOIN 客戶資料 ON 報價表.客戶編號 = 客戶資料.客戶編號
-  $where 
-  ORDER BY 報價表.報價單號 DESC, 報價工件表.工件單號 
+
 ";
 
 
@@ -79,13 +63,17 @@ $arr = $sth->fetchAll(\PDO::FETCH_ASSOC);
 $json = "";
 $rows = [];
 for ($i = 0; $i < count($arr); $i++) {
-  
-  foreach ($arr[$i] as $key => $value) {    
+
+  foreach ($arr[$i] as $key => $value) {
     $value = filterStr($value);
-    $newarr[$key] =urlencode(trim($value));    
+    $newarr[$key] = urlencode(trim($value));
   }
 
-   // 原始日期 2022-01-05 00:00:00 將時分秒去掉    
+
+  // 移除.0結尾字串 (例123.0=>123)
+  $newarr["size1"] = preg_replace("/.0$/", "", $newarr["size1"]);
+
+  // 原始日期 2022-01-05 00:00:00 將時分秒去掉    
   //  $newarr["inDate"] = substr( $newarr["inDate"] , 0 , 10 );
 
   $rows[$i] = $newarr;
@@ -93,7 +81,7 @@ for ($i = 0; $i < count($arr); $i++) {
 
 
 // array to json
-$json = json_encode($rows,JSON_UNESCAPED_SLASHES);
+$json = json_encode($rows, JSON_UNESCAPED_SLASHES);
 
 
 // 再用urldecode把資料轉回成中文格式
@@ -103,17 +91,15 @@ echo $json;
 
 /************************************** */
 // 將多餘的符號過濾掉
-function filterStr($str) {
+function filterStr($str)
+{
 
   // '2022100408' 附註欄內容含有換行,要替換掉 
   $str = trim(preg_replace('/\s\s+/', ' ', $str));
   // '2022092716' 品名含有 " 要加上 \
   $str = str_replace('"', '\"', $str);
 
-   $str = str_replace("	", "", $str);
+  $str = str_replace("	", "", $str);
 
   return $str;
-
 }
-
-?>

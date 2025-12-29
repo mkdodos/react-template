@@ -3,35 +3,13 @@
     {
       "dataKey": "id",
       "title": "代號",
-      "type": "text",
-      "editable": "true",
+      "type": "text",     
       "viewable": "true"
     },
 
     {
-      "dataKey": "workNote",
-      "title": "名稱",
-      "type": "text",
-      "editable": "true",
-      "viewable": "true"
-    },
-    {
-      "dataKey": "quoteID",
-      "title": "報價單號",
-      "type": "text",
-      "editable": "true",
-      "viewable": "true"
-    },
-    {
-      "dataKey": "role",
-      "title": "角色",
-      "type": "text",
-      "editable": "true",
-      "viewable": "true"
-    },
-     {
-      "dataKey": "player",
-      "title": "姓名",
+      "dataKey": "size1",
+      "title": "尺寸",
       "type": "text",
       "editable": "true",
       "viewable": "true"

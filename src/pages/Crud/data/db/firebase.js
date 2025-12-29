@@ -15,6 +15,7 @@ import {
 
 // 集合名稱
 const colName = "template";
+let response = null;
 
 export async function read(params) {
   // 取得集合
@@ -26,4 +27,22 @@ export async function read(params) {
     return { ...doc.data(), id: doc.id };
   });
   return list;
+}
+
+export async function create(params) {
+  response = await addDoc(collection(db, colName), {
+    ...params,
+  });
+  return response.id;
+}
+
+export async function update(params) {
+  await updateDoc(doc(db, colName, params.id), {
+    ...params,
+  });
+  // return response.id;
+}
+
+export async function destory(id) {
+  await deleteDoc(doc(db, colName, id));
 }

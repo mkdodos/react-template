@@ -147,7 +147,7 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
             primary
             onClick={() =>
               dispatch({
-                type: state.rowIndex == -1 ? "CREATE" : "UPDATE",
+                type: state.editedRowIndex == -1 ? "CREATE" : "UPDATE",
                 payload: { row },
               })
             }
