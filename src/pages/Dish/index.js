@@ -11,7 +11,7 @@ export default function index() {
   // 預設資料物件
   const initState = {
     data: [], //資料
-    options: [],
+    options:[],
     loading: true,
   };
 
@@ -19,7 +19,7 @@ export default function index() {
 
   useEffect(() => {
     // 讀取資料
-    dispatch({ type: "LOAD", params: {} });
+    dispatch({ type: "LOAD" });
   }, []);
 
   // 欄位預設值
@@ -43,18 +43,13 @@ export default function index() {
 
   const handleEdit = (row, index) => {
     dispatch({ type: "EDIT", payload: { index } });
-    console.log(row);
+    console.log(row)
     setRow(row);
-  };
-
-  const handleChange = (e, { value }) => {
-    // console.log(value);
-    dispatch({ type: "LOAD", params: { workName: value } });
   };
 
   return (
     <>
-      <DropdownCom onChange={handleChange} options={state.options} />
+     
 
       {Array.isArray(state.data) && (
         <TableView

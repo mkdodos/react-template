@@ -1,0 +1,18 @@
+{
+  "columns": [
+    {
+      "dataKey": "id",
+      "title": "代號",
+      "type": "text",
+      "viewable": "true"
+    },
+
+    {
+      "dataKey": "dishName",
+      "title": "品名",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    }
+  ]
+}

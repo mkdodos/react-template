@@ -32,6 +32,9 @@ export default function Navbar() {
         <Menu.Item as={Link} to="/crud">
           Crud
         </Menu.Item>
+        <Menu.Item as={Link} to="/dish">
+          Dish
+        </Menu.Item>
         <Menu.Item as={Link} to="/master-detail">
           MasterDetail
         </Menu.Item>

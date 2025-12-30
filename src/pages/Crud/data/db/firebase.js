@@ -8,6 +8,7 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
+  where,
   orderBy,
   getDoc,
   startAfter,
@@ -17,26 +18,65 @@ import {
 const colName = "template";
 let response = null;
 
+// const options = [
+//   {
+//     key: "Jenny Hess",
+//     text: "馬克",
+//     value: "馬克",
+//   },
+//   {
+//     key: "Elliot Fu",
+//     text: "Elliot Fu",
+//     value: "Elliot Fu",
+//   },
+//   {
+//     key: "Stevie Feliciano",
+//     text: "Stevie Feliciano",
+//     value: "Stevie Feliciano",
+//   },
+// ];
+
 export async function read(params) {
-  // 取得集合
-  const col = collection(db, colName);
-  // 資料快照
-  const snapshot = await getDocs(col);
-  // 資料跑迴圈轉成物件陣列
+  let q = collection(db, colName);
+
+  // 依所傳參數組合不同查詢
+  if (params.workName) q = query(q, where("workName", "==", params.workName));
+
+  const snapshot = await getDocs(q);
+
+  // if (className) q = query(q, where("class", "==", className));
+
+  // const col = collection(db, colName);
+  // const snapshot = await getDocs(col);
   const list = snapshot.docs.map((doc) => {
     return { ...doc.data(), id: doc.id };
   });
   return list;
 }
 
+export async function addOption(value) {
+  console.log(value);
+  response = await addDoc(collection(db, "dish"), {
+    dishName: value,
+  });
+  return response.id;
+}
+
 export async function readOptions() {
+  // return options;
   // 取得集合
-  const col = collection(db, colName);
+  const col = collection(db, "dish");
   // 資料快照
   const snapshot = await getDocs(col);
   // 資料跑迴圈轉成物件陣列
   const list = snapshot.docs.map((doc) => {
-    return { ...doc.data(), id: doc.id };
+    console.log(doc.data());
+    // return { ...doc.data(), id: doc.id };
+    return {
+      key: doc.id,
+      text: doc.data().dishName,
+      value: doc.data().dishName,
+    };
   });
   return list;
 }

@@ -1,6 +1,6 @@
 // 引入不同資料庫
 // import { read, create, update, destory } from "./db/pdo";
-import { read, create, update, destory, readOptions,addOption } from "./db/firebase";
+import { read, create, update, destory } from "./db/firebase";
 
 export const reducer = async (state, action) => {
   // 接收 row 值給後端處理(create,update)
@@ -29,13 +29,13 @@ export const reducer = async (state, action) => {
 
     // 載入資料
     case "LOAD":
-      const data = await read(action.params);
-      const options = await readOptions();
-      console.log(options)
+      const data = await read();
+      // const options = await readOptions();
+      
       return {
         ...state,
         data,
-        options,
+        // options,
         loading: false,
       };
 
