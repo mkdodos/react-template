@@ -2,6 +2,7 @@ import React from "react";
 import { Menu, Grid, GridColumn } from "semantic-ui-react";
 import Vertical from "./components/Vertical";
 import Basic from "./components/Basic";
+import DdMenu from "./components/DdMenu";
 
 export default function index() {
   return (
@@ -13,6 +14,7 @@ export default function index() {
         <GridColumn width={9}>
           <Basic />
         </GridColumn>
+       
       </Grid>
 
       {/* <Basic /> */}

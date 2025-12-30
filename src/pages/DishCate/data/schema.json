@@ -1,0 +1,18 @@
+{
+  "columns": [
+    {
+      "dataKey": "id",
+      "title": "代號",
+      "type": "text",
+      "viewable": "true"
+    },
+
+    {
+      "dataKey": "cateName",
+      "title": "類別",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    }
+  ]
+}
