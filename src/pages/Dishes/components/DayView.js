@@ -52,17 +52,19 @@ export default function DayView({ data, handleAdd, handleEdit }) {
   const listItem = (date) => {
     return (
       <ListItem key={uuidv4()}>
-        <List divided horizontal link>
-          <ListItem as="a">
+        <List divided horizontal size="large">
+          {/* 日期 */}
+          <ListItem>
             <Label color={getColor(date)} size="large">
               {date} ({getWeekday(date)})
             </Label>
           </ListItem>
 
+          {/* 該日資料 */}
           {groupedData[date].map((dayData) => {
             return (
               <ListItem
-                as="a"
+                // as="a"
                 onClick={() => handleEdit(dayData, itemIndex(dayData.id))}
                 key={uuidv4()}
               >

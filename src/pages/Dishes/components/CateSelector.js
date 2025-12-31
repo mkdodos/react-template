@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { Dropdown } from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 
-export default function CateSelector({ onAddItem, onChange, value, options }) {
+export default function CateSelector({ onChange, value, options }) {
   return (
     <Dropdown
-      onAddItem={onAddItem}
-      // allowAdditions
       clearable
       selection
       search
