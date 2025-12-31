@@ -5,13 +5,16 @@ import { reducer } from "./data/reducer";
 // import { reducer } from "./data/reducerPdo";
 import TableView from "./components/TableView";
 import EditForm from "./components/EditForm";
-import DropdownCom from "./components/DropdownCom";
+
+import SearchBar from "./components/SearchBar";
+import ViewTab from "./components/ViewTab";
 
 export default function index() {
   // 預設資料物件
   const initState = {
     data: [], //資料
     options: [],
+    cates:[],
     loading: true,
   };
 
@@ -54,9 +57,16 @@ export default function index() {
 
   return (
     <>
-      <DropdownCom onChange={handleChange} options={state.options} />
+      <SearchBar state={state} dispatch={dispatch} />
+      <ViewTab
+        state={state}
+        // dispatch={dispatch}
+        columns={columns}
+        handleAdd={handleAdd}
+        handleEdit={handleEdit}
+      />
 
-      {Array.isArray(state.data) && (
+      {/* {Array.isArray(state.data) && (
         <TableView
           state={state}
           dispatch={dispatch}
@@ -64,7 +74,7 @@ export default function index() {
           handleAdd={handleAdd}
           handleEdit={handleEdit}
         />
-      )}
+      )} */}
 
       <EditForm
         columns={columns}

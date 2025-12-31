@@ -8,6 +8,8 @@ import Grid from "./pages/Grid";
 import Tab from "./pages/Tab";
 import Form from "./pages/Form";
 import Modal from "./pages/Modal";
+import Segment from "./pages/ui/Segment"
+import List from "./pages/ui/List"
 
 import Crud from "./pages/Crud"
 import Dish from "./pages/Dish"
@@ -24,6 +26,8 @@ export default function App() {
         <Navbar />
         <Divider/>        
         <Routes>
+          <Route path="/list" element={<List />} />
+          <Route path="/segment" element={<Segment />} />
           <Route path="/modal" element={<Modal />} />
           <Route path="/dropdown" element={<Dropdown />} />
           <Route path="/table" element={<Table />} />

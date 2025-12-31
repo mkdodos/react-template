@@ -22,14 +22,13 @@ export async function read(params) {
   let q = collection(db, colName);
 
   // 依所傳參數組合不同查詢
-  if (params.workName) q = query(q, where("workName", "==", params.workName));
-
+  const { dish, cate } = params;
+  if (dish) q = query(q, where("dish", "==", dish));
+  if (cate) q = query(q, where("cate", "==", cate));
+  // q = query(q, orderBy("date","desc"));
+  q = query(q, orderBy("date"));
   const snapshot = await getDocs(q);
 
-  // if (className) q = query(q, where("class", "==", className));
-
-  // const col = collection(db, colName);
-  // const snapshot = await getDocs(col);
   const list = snapshot.docs.map((doc) => {
     return { ...doc.data(), id: doc.id };
   });
@@ -72,7 +71,7 @@ export async function readCates() {
     return {
       key: doc.id,
       text: doc.data().cateName,
-      value: doc.data().cateName
+      value: doc.data().cateName,
     };
   });
   return list;

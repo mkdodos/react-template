@@ -1,5 +1,6 @@
 import { Form, Button, Modal, Dropdown } from "semantic-ui-react";
-import DropdownCom from "./DropdownCom";
+import DishSelector from "./DishSelector";
+import CateSelector from "./CateSelector";
 
 export default function EditForm({ columns, state, dispatch, row, setRow }) {
   // console.log(state);
@@ -47,7 +48,7 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
           fields.push(
             <Form.Field key={index}>
               <label>{col.title}</label>
-              <DropdownCom
+              <DishSelector
                 onAddItem={handleAddition}
                 options={state.options}
                 value={row.dish}
@@ -61,7 +62,7 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
           fields.push(
             <Form.Field key={index}>
               <label>{col.title}</label>
-              <DropdownCom
+              <CateSelector
                 onAddItem={handleAddition}
                 options={state.cates}
                 value={row.cate}

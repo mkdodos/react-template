@@ -7,6 +7,12 @@ export default function Navbar() {
       <Menu>
         <Dropdown item text="UI">
           <DropdownMenu>
+            <Menu.Item as={Link} to="/list">
+              List
+            </Menu.Item>
+            <Menu.Item as={Link} to="/segment">
+              Segment
+            </Menu.Item>
             <Menu.Item as={Link} to="/dropdown">
               Dropdown
             </Menu.Item>

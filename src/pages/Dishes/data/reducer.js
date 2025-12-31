@@ -68,7 +68,8 @@ export const reducer = async (state, action) => {
       id = await create(row);
 
       // 接收後端傳回的 id , 加入 row 至陣列
-      state.data.unshift({ ...row, id });
+      // state.data.unshift({ ...row, id });
+      state.data.push({ ...row, id });
       return {
         ...state,
         isEditFormOpen: false,
