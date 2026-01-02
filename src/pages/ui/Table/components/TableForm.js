@@ -16,7 +16,7 @@ import {
 } from "semantic-ui-react";
 // import People from "../Label";
 
-import Dropdown from "../../Dropdown";
+import Dropdown from "../../../Dropdown";
 
 import "./style.css";
 // import { data } from "react-router-dom";

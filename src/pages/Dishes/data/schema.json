@@ -14,21 +14,33 @@
       "editable": "true",
       "viewable": "true"
     },
-     {
+    {
       "dataKey": "dish",
       "title": "菜名",
       "type": "text",
       "editable": "true",
       "viewable": "true"
     },
-     {
+    {
       "dataKey": "cate",
       "title": "類別",
       "type": "text",
       "editable": "true",
       "viewable": "true"
+    },
+    {
+      "dataKey": "fridge",
+      "title": "冰箱材料",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    },
+    {
+      "dataKey": "tobuy",
+      "title": "待購材料",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
     }
-    
-   
   ]
 }

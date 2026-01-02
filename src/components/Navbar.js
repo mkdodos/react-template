@@ -17,7 +17,7 @@ export default function Navbar() {
               Dropdown
             </Menu.Item>
             <Menu.Item as={Link} to="/table">
-              表格
+              Table
             </Menu.Item>
             <Menu.Item as={Link} to="/button">
               按鈕

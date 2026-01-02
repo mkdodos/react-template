@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dropdown from "./pages/Dropdown";
-import Table from "./pages/Table";
+import Table from "./pages/ui/Table";
 import Menu from "./pages/Menu";
 import Button from "./pages/Button";
 import Grid from "./pages/Grid";
