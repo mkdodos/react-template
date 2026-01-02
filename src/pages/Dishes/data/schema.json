@@ -24,20 +24,18 @@
     {
       "dataKey": "cate",
       "title": "類別",
-      "type": "text",
-      "editable": "true",
-      "viewable": "true"
+      "type": "text"
     },
     {
       "dataKey": "fridge",
-      "title": "冰箱材料",
+      "title": "冰箱",
       "type": "text",
       "editable": "true",
       "viewable": "true"
     },
     {
       "dataKey": "tobuy",
-      "title": "待購材料",
+      "title": "待購",
       "type": "text",
       "editable": "true",
       "viewable": "true"

@@ -16,7 +16,11 @@ export default function ViewTab({
       menuItem: "PhoneView",
       render: () => (
         <TabPane>
-          <PhoneView data={state.data} handleAdd={handleAdd} />
+          <PhoneView
+            data={state.data}
+            handleAdd={handleAdd}
+            handleEdit={handleEdit}
+          />
         </TabPane>
       ),
     },

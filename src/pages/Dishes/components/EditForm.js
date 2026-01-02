@@ -1,4 +1,13 @@
-import { Form, Button, Modal, Dropdown } from "semantic-ui-react";
+import {
+  Form,
+  Button,
+  Modal,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
+  Input,
+} from "semantic-ui-react";
 import DishSelector from "./DishSelector";
 import CateSelector from "./CateSelector";
 
@@ -89,6 +98,44 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
     return fields;
   };
 
+  const tableForm = () => {
+    return (
+      <Table definition unstackable>
+        <TableBody>
+          {columns.map((col) => {
+            return (
+              <TableRow>
+                <TableCell width={3}>{col.title}</TableCell>
+                <TableCell>
+                  <Input
+                    type={col.type}
+                    name={col.dataKey}
+                    value={row[col.dataKey]}
+                    onChange={handleInputChange}
+                    fluid
+                  />
+                </TableCell>
+              </TableRow>
+            );
+          })}
+
+          {/* <TableRow>
+            <TableCell>待購</TableCell>
+            <TableCell>
+              <Input type="text" name="workName" fluid />
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell width={3}>佳餚</TableCell>
+            <TableCell>
+              <Input type="text" name="workNote" fluid />
+            </TableCell>
+          </TableRow> */}
+        </TableBody>
+      </Table>
+    );
+  };
+
   return (
     <>
       <Modal
@@ -98,7 +145,8 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
       >
         <Modal.Header>編輯</Modal.Header>
         <Modal.Content>
-          <Form>{formGroups(2)}</Form>
+          {/* <Form>{formGroups(2)}</Form> */}
+          <Form>{tableForm()}</Form>
         </Modal.Content>
         <Modal.Actions>
           <Button

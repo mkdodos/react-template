@@ -15,10 +15,16 @@ import {
 } from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 
-export default function PhoneView({ data,handleAdd }) {
+export default function PhoneView({ data, handleAdd, handleEdit }) {
   const groupedData = Object.groupBy(data, (obj) => obj.date);
   // 所有日期
   const keys = Object.keys(groupedData);
+
+  const itemIndex = (id) => {
+    const elem = (element) => element.id == id;
+    return data.findIndex(elem);
+  };
+
   const getWeekday = (date) => {
     const birthday = new Date(date);
     const day1 = birthday.getDay();
@@ -73,7 +79,7 @@ export default function PhoneView({ data,handleAdd }) {
           {groupedData[date].map((dayData) => {
             return (
               <ListItem
-                // onClick={() => handleEdit(dayData, itemIndex(dayData.id))}
+                onClick={() => handleEdit(dayData, itemIndex(dayData.id))}
                 key={uuidv4()}
               >
                 {dayData[column]}
@@ -105,6 +111,13 @@ export default function PhoneView({ data,handleAdd }) {
               </TableRow>
 
               <TableRow>
+                <TableCell>
+                  <Label color="pink">佳餚</Label>
+                </TableCell>
+                <TableCell>{listItem2(obj, "dish")}</TableCell>
+              </TableRow>
+
+              <TableRow>
                 <TableCell width={3}>
                   <Label color="teal">冰箱</Label>
                 </TableCell>
@@ -115,12 +128,6 @@ export default function PhoneView({ data,handleAdd }) {
                   <Label color="olive">待購</Label>
                 </TableCell>
                 <TableCell>{listItem2(obj, "tobuy")}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Label color="pink">佳餚</Label>
-                </TableCell>
-                <TableCell>{listItem2(obj, "dish")}</TableCell>
               </TableRow>
             </Fragment>
           );

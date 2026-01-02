@@ -20,10 +20,10 @@ export default function SearchBar({state,dispatch}) {
             <label>菜名</label>
             <DishSelector onChange={handleChange} options={state.options} />
           </FormField>
-          <FormField inline>
+          {/* <FormField inline>
             <label>類別</label>
             <CateSelector onChange={handleCateChange} options={state.cates} />
-          </FormField>
+          </FormField> */}
         </FormGroup>
       </Form>
     </div>
