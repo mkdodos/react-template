@@ -47,7 +47,7 @@ export default function index() {
             </Button>
           </TableCell>
         </TableRow>
-        <TableRow className="abc" top aligned>
+        <TableRow className="abc">
           <TableCell>11-08</TableCell>
           <TableCell>舟屋</TableCell>
           <TableCell>

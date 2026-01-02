@@ -60,7 +60,7 @@ export default function index() {
       <SearchBar state={state} dispatch={dispatch} />
       <ViewTab
         state={state}
-        // dispatch={dispatch}
+        dispatch={dispatch}
         columns={columns}
         handleAdd={handleAdd}
         handleEdit={handleEdit}

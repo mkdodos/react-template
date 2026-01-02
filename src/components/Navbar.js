@@ -40,9 +40,9 @@ export default function Navbar() {
           </DropdownMenu>
         </Dropdown>
 
-        <Menu.Item as={Link} to="/crud">
+        {/* <Menu.Item as={Link} to="/crud">
           Crud
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item as={Link} to="/dish">
           Dish
         </Menu.Item>
@@ -52,9 +52,9 @@ export default function Navbar() {
          <Menu.Item as={Link} to="/dishes">
           Dishes
         </Menu.Item>
-        <Menu.Item as={Link} to="/master-detail">
+        {/* <Menu.Item as={Link} to="/master-detail">
           MasterDetail
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item
           position="right"
           as={Link}

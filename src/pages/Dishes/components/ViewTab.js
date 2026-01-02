@@ -2,9 +2,24 @@ import React from "react";
 import { TabPane, Tab } from "semantic-ui-react";
 import DayView from "./DayView";
 import TableView from "./TableView";
+import PhoneView from "./PhoneView";
 
-export default function ViewTab({ state, columns, handleAdd, handleEdit }) {
+export default function ViewTab({
+  state,
+  dispatch,
+  columns,
+  handleAdd,
+  handleEdit,
+}) {
   const panes = [
+    {
+      menuItem: "PhoneView",
+      render: () => (
+        <TabPane>
+          <PhoneView data={state.data} handleAdd={handleAdd} />
+        </TabPane>
+      ),
+    },
     {
       menuItem: "DayView",
       render: () => (
@@ -23,6 +38,7 @@ export default function ViewTab({ state, columns, handleAdd, handleEdit }) {
         <TabPane>
           <TableView
             state={state}
+            dispatch={dispatch}
             columns={columns}
             handleAdd={handleAdd}
             handleEdit={handleEdit}
@@ -30,13 +46,12 @@ export default function ViewTab({ state, columns, handleAdd, handleEdit }) {
         </TabPane>
       ),
     },
-    { menuItem: "Tab 3", render: () => <TabPane>Tab 3 Content</TabPane> },
   ];
 
   return (
     <div>
       <Tab
-        menu={{ fluid: true, vertical: true, tabular: false }}
+        menu={{ fluid: true, vertical: false, tabular: false }}
         panes={panes}
       />
     </div>

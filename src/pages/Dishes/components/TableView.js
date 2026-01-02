@@ -3,7 +3,13 @@ import { Table, Button, Icon } from "semantic-ui-react";
 import { API_HOST } from "../../../global/constants";
 import { v4 as uuidv4 } from "uuid";
 
-export default function TableView({ state, columns, handleAdd, handleEdit }) {
+export default function TableView({
+  state,
+  dispatch,
+  columns,
+  handleAdd,
+  handleEdit,
+}) {
   const { data, loading } = state;
 
   // 篩選可顯示欄位
@@ -11,15 +17,28 @@ export default function TableView({ state, columns, handleAdd, handleEdit }) {
 
   return (
     <>
-      <Table celled unstackable>
+      <Table celled unstackable sortable>
         <Table.Header>
           <Table.Row>
             {columns.map((col, index) => {
               return (
-                <Table.HeaderCell key={index}>{col.title}</Table.HeaderCell>
+                <Table.HeaderCell
+                  sorted={
+                    state.sortedColumn == col.dataKey ? state.direction : null
+                  }
+                  key={index}
+                  onClick={() =>
+                    dispatch({
+                      type: "SORT",
+                      payload: { sortedColumn: col.dataKey, type: col.type },
+                    })
+                  }
+                >
+                  {col.title}
+                </Table.HeaderCell>
               );
             })}
-           
+
             <Table.HeaderCell>
               <Button primary onClick={handleAdd} loading={loading}>
                 新增
@@ -29,7 +48,7 @@ export default function TableView({ state, columns, handleAdd, handleEdit }) {
         </Table.Header>
 
         <Table.Body>
-          {data.map((row,rowIndex) => {
+          {data.map((row, rowIndex) => {
             return (
               <Table.Row key={uuidv4()}>
                 {columns.map((col, index) => {
@@ -37,9 +56,11 @@ export default function TableView({ state, columns, handleAdd, handleEdit }) {
                     <Table.Cell key={uuidv4()}>{row[col.dataKey]}</Table.Cell>
                   );
                 })}
-               
+
                 <Table.Cell>
-                  <Button onClick={() => handleEdit(row, rowIndex)}>編輯</Button>
+                  <Button onClick={() => handleEdit(row, rowIndex)}>
+                    編輯
+                  </Button>
                 </Table.Cell>
               </Table.Row>
             );
