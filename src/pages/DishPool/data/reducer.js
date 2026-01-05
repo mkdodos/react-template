@@ -9,6 +9,8 @@ import {
   addOption,
 } from "./db/firebase";
 
+import { create as createDishes } from "../../Dishes/data/db/firebase";
+
 export const reducer = async (state, action) => {
   // 接收 row 值給後端處理(create,update)
   const row = action.payload?.row;
@@ -36,7 +38,7 @@ export const reducer = async (state, action) => {
     case "LOAD":
       const data = await read(action.params);
       const options = await readOptions();
-      console.log(options);
+      // console.log(options);
       return {
         ...state,
         data,
@@ -67,15 +69,36 @@ export const reducer = async (state, action) => {
       };
 
     // 新建
+    case "TRANS":
+      // console.log(action.payload);
+      // 將此材料新增至 Dishes fridge
+      action.payload.assigned.map(async (obj) => {
+        await createDishes({ fridge: obj.name, date: action.payload.dishDate });
+      });
+      // 將材料從 DishPool 刪除
+
+      const ids = action.payload.assigned.map((obj) => {
+        return obj.id;
+      });
+
+      ids.map(async (id) => await destory(id));
+      // ids.map(async (id) => console.log(obj));
+
+      const arr = state.data.filter((element) => !ids.includes(element.id));
+
+      return {
+        ...state,
+        data: arr,
+        isEditFormOpen: false,
+        editedRowIndex: -1,
+      };
+
+    // 新建
     case "CREATE":
-      // const date = row.date.toISOString().substring(0, 10);
       id = await create({ ...row, date: row.date });
 
-      // console.log(new Date().toISOString())
-
-      // console.log(row.date.toISOString().substring(0,10))
-      // console.log(row.date)
-      // console.log(row)
+      // 將此材料新增至 Dishes fridge
+      await createDishes({ fridge: row.name, date: row.date });
 
       // 接收後端傳回的 id , 加入 row 至陣列
       state.data.unshift({ ...row, id });

@@ -53,7 +53,7 @@ export async function readOptions() {
   const snapshot = await getDocs(col);
   // 資料跑迴圈轉成物件陣列
   const list = snapshot.docs.map((doc) => {
-    console.log(doc.data());
+    // console.log(doc.data());
     // return { ...doc.data(), id: doc.id };
     return {
       key: doc.id,

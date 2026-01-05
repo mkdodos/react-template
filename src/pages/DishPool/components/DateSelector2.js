@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { Button, Label } from "semantic-ui-react";
 
-export default function DateSelector({ dishDate, setDishDate }) {
+export default function DateSelector({ row, setRow }) {
   const selectLable = (text) => {
-    setDishDate(text);
-    // console.log(text);
-    // console.log(date);
+    setRow({ ...row, date: text });
   };
 
   // 加天數的函數
@@ -32,7 +30,7 @@ export default function DateSelector({ dishDate, setDishDate }) {
         onClick={() => selectLable(convertDate(0))}
         size="large"
         color="teal"
-        basic={dishDate !== convertDate(0)}
+        basic={row.date !== convertDate(0)}
       >
         今日 ({convertDate(0).substring(5, 10)})
       </Label>
@@ -40,10 +38,19 @@ export default function DateSelector({ dishDate, setDishDate }) {
         onClick={() => selectLable(convertDate(1))}
         size="large"
         color="teal"
-        basic={dishDate !== convertDate(1)}
+        basic={row.date !== convertDate(1)}
       >
         明日 ({convertDate(1).substring(5, 10)})
       </Label>
+      <Label
+        onClick={() => selectLable(convertDate(2))}
+        size="large"
+        color="teal"
+        basic={row.date !== convertDate(2)}
+      >
+        後天 ({convertDate(2).substring(5, 10)})
+      </Label>
+     
     </>
   );
 }

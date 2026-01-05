@@ -93,9 +93,9 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
           <Form>
             {formGroups(2)}
 
-            <FormField>
+            {/* <FormField>
               <DateSelector setRow={setRow} row={row} />
-            </FormField>
+            </FormField> */}
           </Form>
         </Modal.Content>
         <Modal.Actions>

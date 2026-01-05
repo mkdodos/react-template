@@ -11,6 +11,8 @@ import {
 import DishSelector from "./DishSelector";
 import CateSelector from "./CateSelector";
 
+import {v4 as uuidv4} from "uuid"
+
 export default function EditForm({ columns, state, dispatch, row, setRow }) {
   // console.log(state);
   // 篩選可編輯欄位
@@ -104,7 +106,7 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
         <TableBody>
           {columns.map((col) => {
             return (
-              <TableRow>
+              <TableRow key={uuidv4()}>
                 <TableCell width={3}>{col.title}</TableCell>
                 <TableCell>
                   <Input

@@ -5,7 +5,7 @@ import { reducer } from "./data/reducer";
 // import { reducer } from "./data/reducerPdo";
 import TableView from "./components/TableView";
 import EditForm from "./components/EditForm";
-
+import FoodSelector from "./components/FoodSelector";
 
 export default function index() {
   // 預設資料物件
@@ -54,6 +54,8 @@ export default function index() {
 
   return (
     <>
+      <FoodSelector data={state.data} dispatch={dispatch}/>
+
       {Array.isArray(state.data) && (
         <TableView
           state={state}
