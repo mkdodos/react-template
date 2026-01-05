@@ -49,19 +49,22 @@ export default function Navbar() {
         <Menu.Item as={Link} to="/dish-cate">
           DishCate
         </Menu.Item>
+         <Menu.Item as={Link} to="/dish-pool">
+          DishPool
+        </Menu.Item>
          <Menu.Item as={Link} to="/dishes">
           Dishes
         </Menu.Item>
         {/* <Menu.Item as={Link} to="/master-detail">
           MasterDetail
         </Menu.Item> */}
-        <Menu.Item
+        {/* <Menu.Item
           position="right"
           as={Link}
           to="http://localhost:8888/react-template/pdo/"
         >
           PDO
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
     </div>
   );

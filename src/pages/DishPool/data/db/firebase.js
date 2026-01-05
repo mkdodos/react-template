@@ -15,8 +15,9 @@ import {
 } from "firebase/firestore/lite";
 
 // 集合名稱
-const colName = "template";
+const colName = "dishPool";
 let response = null;
+
 
 export async function read(params) {
   let q = collection(db, colName);

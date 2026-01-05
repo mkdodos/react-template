@@ -14,6 +14,7 @@ import List from "./pages/ui/List"
 import Crud from "./pages/Crud"
 import Dish from "./pages/Dish"
 import DishCate from "./pages/DishCate"
+import DishPool from "./pages/DishPool"
 import Dishes from "./pages/Dishes"
 import MasterDetail from "./pages/MasterDetail"
 
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/crud" element={<Crud />} />
           <Route path="/dish" element={<Dish />} />
           <Route path="/dish-cate" element={<DishCate />} />
+          <Route path="/dish-pool" element={<DishPool/>} />
           <Route path="/dishes" element={<Dishes/>} />
           <Route path="/master-detail" element={<MasterDetail />} />
         </Routes>

@@ -1,0 +1,23 @@
+{
+  "columns": [
+    {
+      "dataKey": "id",
+      "title": "代號",
+      "type": "text",
+      "viewable": "true"
+    },
+    {
+      "dataKey": "name",
+      "title": "食材",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
+    },
+    {
+      "dataKey": "date",
+      "title": "日期",
+      "type": "date",      
+      "viewable": "true"
+    }
+  ]
+}
