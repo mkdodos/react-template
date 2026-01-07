@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react";
-import { Button, Divider, Input } from "semantic-ui-react";
+import {
+  Button,
+  Divider,
+  Form,
+  FormField,
+  FormGroup,
+  Input,
+} from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 import DateSelector from "./DateSelector";
 
 export default function FoodSelector({ data, dispatch }) {
+  // 已選取
   const [assigned, setAssigned] = useState([]);
+  // 待選取
   const [unassigned, setUnassigned] = useState([]);
+
   const [dishDate, setDishDate] = useState(
     new Date().toISOString().substring(0, 10)
   );
@@ -21,6 +31,8 @@ export default function FoodSelector({ data, dispatch }) {
 
   // 新增 Dishes , 刪除 DishPool
   const handleTrans = () => {
+    //
+    setAssigned([]);
     dispatch({ type: "TRANS", payload: { assigned, dishDate } });
   };
 
@@ -45,16 +57,27 @@ export default function FoodSelector({ data, dispatch }) {
           </Button>
         );
       })}
+      <Divider />
       {/* <Input type="date" value={new Date().toISOString().substring(0, 10)} /> */}
-      <Input
-        type="date"
-        value={dishDate}
-        onChange={(e, obj) => setDishDate(obj.value)}
-      />
+      <Form>
+        <FormGroup>
+          <FormField>
+            <Input
+              type="date"
+              value={dishDate}
+              onChange={(e, obj) => setDishDate(obj.value)}
+            />
+          </FormField>
+          <FormField>
+            <Button color="pink" onClick={handleTrans}>
+              新增至 Dishes
+            </Button>
+          </FormField>
+        </FormGroup>
+      </Form>
+
+      {/* <Divider /> */}
       {/* <DateSelector dishDate={dishDate} setDishDate={setDishDate} /> */}
-      <Button color="pink" onClick={handleTrans}>
-        新增至 Dishes
-      </Button>
     </div>
   );
 }

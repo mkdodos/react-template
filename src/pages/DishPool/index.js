@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import useAsyncReducer from "../../utils/asyncReducer";
 import schema from "./data/schema.json";
 import { reducer } from "./data/reducer";
-// import { reducer } from "./data/reducerPdo";
 import TableView from "./components/TableView";
 import EditForm from "./components/EditForm";
 import FoodSelector from "./components/FoodSelector";

@@ -11,7 +11,7 @@ import {
 import DishSelector from "./DishSelector";
 import CateSelector from "./CateSelector";
 
-import {v4 as uuidv4} from "uuid"
+import { v4 as uuidv4 } from "uuid";
 
 export default function EditForm({ columns, state, dispatch, row, setRow }) {
   // console.log(state);
@@ -32,6 +32,8 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
   };
 
   const handleInputChange = (e) => {
+    // console.log(e.target.name)
+    // console.log(e.target.value)
     setRow({ ...row, [e.target.name]: e.target.value });
   };
 
@@ -104,9 +106,11 @@ export default function EditForm({ columns, state, dispatch, row, setRow }) {
     return (
       <Table definition unstackable>
         <TableBody>
-          {columns.map((col) => {
+          {columns.map((col, index) => {
             return (
-              <TableRow key={uuidv4()}>
+              // key 使用 uuidv4 會無法正常輸入
+              // <TableRow key={uuidv4()}>
+              <TableRow key={index}>
                 <TableCell width={3}>{col.title}</TableCell>
                 <TableCell>
                   <Input
