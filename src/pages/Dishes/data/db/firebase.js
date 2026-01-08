@@ -26,6 +26,7 @@ export async function read(params) {
   if (dish) q = query(q, where("dish", "==", dish));
   if (cate) q = query(q, where("cate", "==", cate));
   q = query(q, orderBy("date","desc"));
+  q = query(q, limit(10));
   // q = query(q, orderBy("date"));
   const snapshot = await getDocs(q);
 

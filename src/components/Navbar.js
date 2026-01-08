@@ -40,9 +40,9 @@ export default function Navbar() {
           </DropdownMenu>
         </Dropdown>
 
-        {/* <Menu.Item as={Link} to="/crud">
+        <Menu.Item as={Link} to="/crud">
           Crud
-        </Menu.Item> */}
+        </Menu.Item>
         <Menu.Item as={Link} to="/dish">
           Dish
         </Menu.Item>

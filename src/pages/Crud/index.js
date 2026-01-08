@@ -24,13 +24,18 @@ export default function index() {
 
   // 欄位預設值
   const defaultRow = {};
-  const { columns } = schema;
+  let { columns } = schema;
   columns.map((obj) => {
     defaultRow[obj.dataKey] = "";
   });
 
   // 預設當日
   defaultRow.date = new Date().toISOString().substring(0, 10);
+
+
+
+  // 篩選可顯示欄位
+  columns = columns.filter((col) => col.viewable);
 
   // 原本 row 放在 useAsyncReducer 會出現無法輸入中文的問題
   // 將其獨立出來處理
