@@ -1,8 +1,8 @@
 import { Button } from "semantic-ui-react";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import font from "../../../components/font/msjhbd-normal";
-import { getWeekday } from "../../../utils/date";
+import font from "../../../../components/font/msjhbd-normal";
+import { getWeekday } from "../../../../utils/date";
 
 export default function Print({ data, columns }) {
   const print = () => {
@@ -13,46 +13,26 @@ export default function Print({ data, columns }) {
     doc.addFont("name-for-addFont-use", "name-for-setFont-use", "normal");
     doc.setFont("name-for-setFont-use");
 
-    // 依日期群組資料
-    const groupedData = Object.groupBy(data, (obj) => obj.date);
-    // 所有日期
-    const keys = Object.keys(groupedData);
-
     columns = [
       {
-        dataKey: "date",
-        title: "日期",
+        dataKey: "name",
+        title: "姓名",
       },
       {
-        dataKey: "items",
-        title: "食材",
+        dataKey: "score",
+        title: "分數",
       },
     ];
 
-    const newData = [];
-    keys
-      .sort((a, b) => (a > b ? 1 : -1))
-      .map((date) => {
-        // 篩選待購欄位有內容的資料
-        const temp = groupedData[date].filter((obj) => obj.tobuy);
-        // 陣列資料用 , 連接成為字串
-        const items = temp.map((item) => item.tobuy).join(", ");
-        const buyDate = date.substring(5, 10) + " (" + getWeekday(date) + ")";
-        newData.push({ date: buyDate, items });
-      });
-
-    // console.log(keys)
-    // return
-
     autoTable(doc, {
-      // theme: "grid", // 格線
-      theme: "plain", // 格線
+      theme: "grid", // 格線
+      // theme: "plain", // 格線
       columns: columns, //欄位
-      body: [...newData], //資料
+      body: [...data], //資料
 
       // {欄位名稱:{halign(水平對齊): 'left center right'}}
       columnStyles: {
-        date: {
+        name: {
           halign: "left",
           cellWidth: 40,
           lineWidth: {
@@ -60,7 +40,7 @@ export default function Print({ data, columns }) {
           },
           lineColor: "gray",
         },
-        items: {
+        score: {
           halign: "left",
           lineWidth: {
             bottom: 0.4,
@@ -89,9 +69,9 @@ export default function Print({ data, columns }) {
 
       // 標題設定在此函數內,會每一頁都出現
       didDrawPage: function () {
-        // 標題
-        // doc.text('採購清單',left,top);
-        doc.text("採購清單", 15, 20);
+        //
+        // doc.text('標題文字',left,top);
+        doc.text("分數表", 15, 20);
       },
     });
 
@@ -99,7 +79,7 @@ export default function Print({ data, columns }) {
   };
   return (
     <Button primary basic onClick={print}>
-      採購清單
+      列印
     </Button>
   );
 }

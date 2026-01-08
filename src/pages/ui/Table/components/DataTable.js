@@ -16,6 +16,8 @@ import {
 } from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 
+import Print from "./Print";
+
 export default function DataTable() {
   // 目前排序欄位
   const [column, setColumn] = useState(null);
@@ -59,6 +61,7 @@ export default function DataTable() {
 
   return (
     <>
+      <Print data={data}/>
       <Table sortable>
         <TableHeader>
           <TableRow>

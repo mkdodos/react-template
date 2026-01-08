@@ -17,10 +17,10 @@ export default function SearchBar({ state, dispatch,columns }) {
     <div>
       <Form>
         <FormGroup>
-          <FormField inline>
+          {/* <FormField inline>
             <label>菜名</label>
             <DishSelector onChange={handleChange} options={state.options} />
-          </FormField>
+          </FormField> */}
           <FormField inline>
             <Print data={state.data} columns={columns} />
           </FormField>
