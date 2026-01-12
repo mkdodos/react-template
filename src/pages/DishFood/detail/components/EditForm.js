@@ -55,7 +55,8 @@ export default function EditForm({
         // trigger={<Button>Show Modal</Button>}
       >
         <ModalHeader>
-          <Header>編輯{state.masterID}</Header>
+          <Header>編輯</Header>
+           {/* <Header>編輯{state.masterID}</Header> */}
         </ModalHeader>
         <ModalContent>
           <Table definition unstackable>

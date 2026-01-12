@@ -36,7 +36,8 @@ export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
         open={state.isMasterAddFormOpen}
       >
         <ModalHeader>
-          <Header>新增{state.masterID}</Header>
+          <Header>新增</Header>
+          {/* <Header>新增{state.masterID}</Header> */}
           {/* {JSON.stringify(state)} */}
         </ModalHeader>
         <ModalContent>
@@ -51,7 +52,6 @@ export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
                     value={row?.date}
                     type="date"
                     name="date"
-                    fluid
                   />
                 </TableCell>
               </TableRow>
@@ -63,7 +63,6 @@ export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
                     value={row?.section}
                     type="text"
                     name="section"
-                    fluid
                   />
                 </TableCell>
               </TableRow>

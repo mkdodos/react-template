@@ -15,15 +15,19 @@ import {
 } from "semantic-ui-react";
 import { v4 as uuidv4 } from "uuid";
 import { getWeekday } from "../../../utils/date";
+import index from "..";
 
-export default function PhoneView({ data, dataDetail, handleAdd, handleEdit }) {
+export default function PhoneView({
+  data,
+  dataDetail,
+  handleAdd,
+  handleAddDetail,
+  handleEdit,
+  handleEditDetail,
+}) {
   console.log(data);
   const groupedData = Object.groupBy(data, (obj) => obj.date);
- 
 
-  
-
-  
   const getColor = (date) => {
     const weekday = getWeekday(date);
     if (weekday == "六") return "teal";
@@ -35,17 +39,30 @@ export default function PhoneView({ data, dataDetail, handleAdd, handleEdit }) {
       (objDetail) => objDetail.masterID === masterID
     );
     console.log(temp);
+    const tempJoin = temp.map((item) => item[column]).join("");
+
+    //  有資料才顯示
+    if (tempJoin === "") {
+      return;
+    }
     return (
       <TableRow>
         <TableCell>
           <Label color={color}>{text}</Label>
         </TableCell>
-        <TableCell>
+        <TableCell colSpan="2">
           <ListItem key={uuidv4()}>
             <List divided horizontal>
               {/* 該日資料 */}
-              {temp.map((obj) => {
-                return <ListItem key={uuidv4()}>{obj[column]}</ListItem>;
+              {temp.map((obj, index) => {
+                return (
+                  <ListItem
+                    onClick={() => handleEditDetail(obj, index)}
+                    key={uuidv4()}
+                  >
+                    {obj[column]}
+                  </ListItem>
+                );
               })}
             </List>
           </ListItem>
@@ -58,24 +75,42 @@ export default function PhoneView({ data, dataDetail, handleAdd, handleEdit }) {
     <Table basic="very" unstackable padded>
       <TableHeader>
         <TableRow>
-          <TableHeaderCell>
+          <TableHeaderCell colSpan="3">
             {/* 新增鈕 */}
             <Button icon onClick={handleAdd}>
               <Icon name="plus" />
             </Button>
           </TableHeaderCell>
+          {/* <TableHeaderCell>           
+            <Button icon onClick={handleAdd}>
+              <Icon name="plus" />
+            </Button>
+          </TableHeaderCell>
+          <TableHeaderCell>           
+            <Button icon onClick={handleAdd}>
+              <Icon name="plus" />
+            </Button>
+          </TableHeaderCell> */}
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((obj) => {
+        {data.map((obj,index) => {
           return (
             <Fragment key={uuidv4()}>
               {/* 日期 */}
               <TableRow>
                 <TableCell colSpan="2">
                   <Label basic color={getColor(obj.date)} size="large">
-                    {obj.date} ({getWeekday(obj.date)})
+                    {obj.date} ({getWeekday(obj.date)}) {obj.section}
                   </Label>
+                </TableCell>
+                <TableCell colSpan="2">
+                  <Button icon onClick={() => handleAddDetail(obj.id)}>
+                    <Icon name="plus" />
+                  </Button>
+                  <Button icon onClick={() => handleEdit(obj,index)}>
+                    <Icon name="pencil" />
+                  </Button>
                 </TableCell>
               </TableRow>
               {detail(obj.id, "dish", "佳餚", "pink")}

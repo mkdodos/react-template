@@ -11,7 +11,7 @@ import {
 } from "semantic-ui-react";
 export default function Basic() {
   return (
-    <Table definition>
+    <Table definition unstackable>
       <TableBody>
         <TableRow>
           <TableCell width={4} >品名</TableCell>

@@ -46,15 +46,15 @@ export default function Navbar() {
         <Menu.Item as={Link} to="/dish-food">
           DishFood
         </Menu.Item>
-        <Menu.Item as={Link} to="/dish">
+        {/* <Menu.Item as={Link} to="/dish">
           Dish
         </Menu.Item>
         <Menu.Item as={Link} to="/dish-cate">
           DishCate
-        </Menu.Item>
-         <Menu.Item as={Link} to="/dish-pool">
+        </Menu.Item> */}
+         {/* <Menu.Item as={Link} to="/dish-pool">
           DishPool
-        </Menu.Item>
+        </Menu.Item> */}
          <Menu.Item as={Link} to="/dishes">
           Dishes
         </Menu.Item>

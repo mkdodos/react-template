@@ -50,7 +50,9 @@ export default function index() {
     setMasterRow(defaultMasterRow);
   };
   const handleAddDetail = (masterID) => {
+    // console.log(masterID)
     dispatch({ type: "ADD_DETAIL", payload: { masterID } });
+    // dispatch({ type: "ADD_DETAIL", payload: { masterID } });
     setDetailRow(defaultDetailRow);
   };
 
@@ -66,7 +68,14 @@ export default function index() {
 
   return (
     <>
-      <PhoneView data={state.data} dataDetail={state.dataDetail} />
+      <PhoneView
+        data={state.data}
+        dataDetail={state.dataDetail}
+        handleAdd={handleAdd}
+        handleEdit={handleEdit}
+        handleAddDetail={handleAddDetail}
+        handleEditDetail={handleEditDetail}
+      />
       {/* 顯示主表 */}
       <TableView
         data={state.data}
