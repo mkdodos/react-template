@@ -3,13 +3,20 @@
     {
       "dataKey": "id",
       "title": "代號",
-      "type": "text"      
+      "type": "text"
     },
 
     {
       "dataKey": "date",
       "title": "日期",
       "type": "date",
+      "editable": "true",
+      "viewable": "true"
+    },
+    {
+      "dataKey": "section",
+      "title": "時段",
+      "type": "text",
       "editable": "true",
       "viewable": "true"
     },
@@ -38,6 +45,14 @@
       "type": "text",
       "editable": "true",
       "viewable": "true"
+    },
+    {
+      "dataKey": "note",
+      "title": "備註",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true"
     }
+    
   ]
 }

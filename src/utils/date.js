@@ -19,4 +19,9 @@ const getWeekday = (date) => {
   }
 };
 
+
+// 傳回當天日期 yyyy-mm-dd
+const today = new Date().toISOString().substring(0,10);
+
+
 export { getWeekday };

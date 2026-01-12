@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Dropdown from "./pages/Dropdown";
+import Dropdown from "./pages/ui/Dropdown";
 import Table from "./pages/ui/Table";
 import Menu from "./pages/Menu";
 import Button from "./pages/Button";
@@ -12,6 +12,7 @@ import Segment from "./pages/ui/Segment"
 import List from "./pages/ui/List"
 
 import Crud from "./pages/Crud"
+import DishFood from "./pages/DishFood"
 import Dish from "./pages/Dish"
 import DishCate from "./pages/DishCate"
 import DishPool from "./pages/DishPool"
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/tab" element={<Tab />} />
           <Route path="/form" element={<Form />} />
           <Route path="/crud" element={<Crud />} />
+          <Route path="/dish-food" element={<DishFood />} />
           <Route path="/dish" element={<Dish />} />
           <Route path="/dish-cate" element={<DishCate />} />
           <Route path="/dish-pool" element={<DishPool/>} />

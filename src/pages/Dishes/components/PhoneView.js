@@ -41,6 +41,9 @@ export default function PhoneView({ data, handleAdd, handleEdit }) {
             <Label basic color={getColor(date)} size="large">
               {date} ({getWeekday(date)})
             </Label>
+            <Label basic color={getColor(date)} size="large">
+              {date} ({getWeekday(date)})
+            </Label>
           </ListItem>
         </List>
       </ListItem>
@@ -106,6 +109,7 @@ export default function PhoneView({ data, handleAdd, handleEdit }) {
               {listItem2(obj, "dish", "佳餚", "pink")}
               {listItem2(obj, "fridge", "冰箱", "teal")}
               {listItem2(obj, "tobuy", "待購", "olive")}
+              {listItem2(obj, "note", "備註", "gray")}
               {/* <TableRow>
                 <TableCell>
                   <Label color="pink">佳餚</Label>

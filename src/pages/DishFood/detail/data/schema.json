@@ -1,0 +1,42 @@
+{
+  "columns": [
+    {
+      "dataKey": "id",
+      "title": "id",
+      "type": "text",      
+      "viewable": "true",
+      "width": "3"
+    },
+     {
+      "dataKey": "masterID",
+      "title": "masterID",
+      "type": "text",      
+      "viewable": "true",
+      "width": "3"
+    },
+    {
+      "dataKey": "dish",
+      "title": "料理",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true",
+      "width": "3"
+    },
+    {
+      "dataKey": "fridge",
+      "title": "冰箱",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true",
+      "width": "3"
+    },
+    {
+      "dataKey": "tobuy",
+      "title": "待購",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true",
+      "width": "3"
+    }
+  ]
+}

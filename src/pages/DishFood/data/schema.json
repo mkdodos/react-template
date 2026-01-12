@@ -1,0 +1,28 @@
+{
+  "columns": [
+    {
+      "dataKey": "id",
+      "title": "id",
+      "type": "text",
+      "viewable": "true",
+      "width": "1"
+    },
+
+    {
+      "dataKey": "date",
+      "title": "日期",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true",
+      "width": "2"
+    },
+    {
+      "dataKey": "section",
+      "title": "時段",
+      "type": "text",
+      "editable": "true",
+      "viewable": "true",
+      "width": "3"
+    }
+  ]
+}
