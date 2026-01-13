@@ -12,7 +12,9 @@ import {
   TableCell,
   TableRow,
   Input,
-  Form
+  Form,
+  ButtonOr,
+  ButtonGroup,
 } from "semantic-ui-react";
 
 export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
@@ -28,6 +30,34 @@ export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
       dispatch({ type: "UPDATE_MASTER", payload: { row } });
     }
   };
+
+  const sectionSelector = (section) => {
+    // const positive
+    return (
+      <ButtonGroup>
+        {section == "午餐" ? (
+          <Button positive onClick={() => setRow({ ...row, section: "午餐" })}>
+            午餐
+          </Button>
+        ) : (
+          <Button onClick={() => setRow({ ...row, section: "午餐" })}>
+            午餐
+          </Button>
+        )}
+        <ButtonOr />
+        {section == "晚餐" ? (
+          <Button positive onClick={() => setRow({ ...row, section: "晚餐" })}>
+            晚餐
+          </Button>
+        ) : (
+          <Button onClick={() => setRow({ ...row, section: "晚餐" })}>
+            晚餐
+          </Button>
+        )}
+      </ButtonGroup>
+    );
+  };
+
   return (
     <>
       <Modal
@@ -60,13 +90,14 @@ export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
                 <TableRow>
                   <TableCell width={3}>時段</TableCell>
                   <TableCell>
-                    <Input
+                    {sectionSelector(row.section)}
+                    {/* <Input
                       onChange={handleInputChange}
                       value={row?.section}
                       type="text"
                       name="section"
                       fluid
-                    />
+                    /> */}
                   </TableCell>
                 </TableRow>
               </TableBody>
@@ -74,16 +105,19 @@ export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
           </Form>
         </ModalContent>
         <ModalActions>
-          <Button
-            floated="left"
-            color="red"
-            onClick={() =>
-              dispatch({ type: "DELETE_MASTER", payload: { id: row.id } })
-            }
-          >
-            刪除
-          </Button>
-          <Button content="儲存" onClick={save} positive />
+          {row.id && (
+            <Button
+              floated="left"
+              color="red"
+              onClick={() =>
+                dispatch({ type: "DELETE_MASTER", payload: { id: row.id } })
+              }
+            >
+              刪除
+            </Button>
+          )}
+
+          <Button content="儲存" onClick={save} primary />
         </ModalActions>
       </Modal>
     </>

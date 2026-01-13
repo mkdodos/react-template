@@ -5,7 +5,7 @@ import schemaDetail from "./detail/data/schema.json";
 import { reducer } from "./data/reducer";
 
 import PhoneView from "./components/PhoneView";
-import Text from "./components/Text";
+// import Text from "./components/Text";
 import TableViewDetail from "./detail/components/TableView";
 import TableView from "./master/components/TableView";
 
@@ -42,7 +42,7 @@ export default function index() {
 
   const defaultMasterRow = {
     date: new Date().toISOString().substring(0, 10),
-    section: "",
+    section: "晚餐",
   };
 
   const [masterRow, setMasterRow] = useState(defaultMasterRow);
@@ -78,17 +78,7 @@ export default function index() {
 
   return (
     <>
-      <Text
-        data={state.data}
-        dataDetail={state.dataDetail}
-        loading={state.loading}
-        handleAdd={handleAdd}
-        handleEdit={handleEdit}
-        handleAddDetail={handleAddDetail}
-        handleEditDetail={handleEditDetail}
-      />
-
-      {/* <PhoneView
+      {/* <Text
         data={state.data}
         dataDetail={state.dataDetail}
         loading={state.loading}
@@ -97,6 +87,16 @@ export default function index() {
         handleAddDetail={handleAddDetail}
         handleEditDetail={handleEditDetail}
       /> */}
+
+      <PhoneView
+        data={state.data}
+        dataDetail={state.dataDetail}
+        loading={state.loading}
+        handleAdd={handleAdd}
+        handleEdit={handleEdit}
+        handleAddDetail={handleAddDetail}
+        handleEditDetail={handleEditDetail}
+      />
       {/* 顯示主表 */}
       {/* <TableView
         data={state.data}

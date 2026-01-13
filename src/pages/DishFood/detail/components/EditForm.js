@@ -3,17 +3,17 @@ import {
   ModalDescription,
   ModalContent,
   ModalActions,
-  Header,
-  Button,
+  Header,  
   Modal,
   TableBody,
   Table,
   TableCell,
   TableRow,
   Input,
+  ButtonOr,
+  ButtonGroup,
+  Button,
 } from "semantic-ui-react";
-
-
 
 export default function EditForm({
   row,
@@ -22,10 +22,8 @@ export default function EditForm({
   data,
   state,
   dispatch,
-  columns
+  columns,
 }) {
-
-
   // 篩選可編輯欄位
   columns = columns.filter((col) => col.editable);
   const handleInputChange = (e) => {
@@ -43,8 +41,10 @@ export default function EditForm({
 
   const destroy = () => {
     if (!confirm("確定刪除嗎?")) return;
-    dispatch({ type: "DELETE_DETAIL", payload: { id:row.id } });
+    dispatch({ type: "DELETE_DETAIL", payload: { id: row.id } });
   };
+
+ 
 
   return (
     <div>
@@ -56,7 +56,7 @@ export default function EditForm({
       >
         <ModalHeader>
           <Header>編輯</Header>
-           {/* <Header>編輯{state.masterID}</Header> */}
+          {/* <Header>編輯{state.masterID}</Header> */}
         </ModalHeader>
         <ModalContent>
           <Table definition unstackable>
@@ -68,6 +68,7 @@ export default function EditForm({
                   <TableRow key={index}>
                     <TableCell width={3}>{col.title}</TableCell>
                     <TableCell>
+                      
                       <Input
                         type={col.type}
                         name={col.dataKey}

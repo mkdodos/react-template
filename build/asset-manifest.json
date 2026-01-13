@@ -1,7 +1,10 @@
 {
   "files": {
     "main.css": "/react-template/build/static/css/main.3cf13505.css",
-    "main.js": "/react-template/build/static/js/main.06772a28.js",
+    "main.js": "/react-template/build/static/js/main.a1511ef9.js",
+    "static/js/239.0ef1baa4.chunk.js": "/react-template/build/static/js/239.0ef1baa4.chunk.js",
+    "static/js/213.57fab92d.chunk.js": "/react-template/build/static/js/213.57fab92d.chunk.js",
+    "static/js/455.42a6c1f8.chunk.js": "/react-template/build/static/js/455.42a6c1f8.chunk.js",
     "static/media/brand-icons.svg": "/react-template/build/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/react-template/build/static/media/icons.62d9dae4e0040e81c980.svg",
     "static/media/outline-icons.svg": "/react-template/build/static/media/outline-icons.9c4845b4b41ef40a22fa.svg",
@@ -20,10 +23,13 @@
     "static/media/outline-icons.woff2": "/react-template/build/static/media/outline-icons.687a4990ea22bb1a49d4.woff2",
     "index.html": "/react-template/build/index.html",
     "main.3cf13505.css.map": "/react-template/build/static/css/main.3cf13505.css.map",
-    "main.06772a28.js.map": "/react-template/build/static/js/main.06772a28.js.map"
+    "main.a1511ef9.js.map": "/react-template/build/static/js/main.a1511ef9.js.map",
+    "239.0ef1baa4.chunk.js.map": "/react-template/build/static/js/239.0ef1baa4.chunk.js.map",
+    "213.57fab92d.chunk.js.map": "/react-template/build/static/js/213.57fab92d.chunk.js.map",
+    "455.42a6c1f8.chunk.js.map": "/react-template/build/static/js/455.42a6c1f8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3cf13505.css",
-    "static/js/main.06772a28.js"
+    "static/js/main.a1511ef9.js"
   ]
 }
