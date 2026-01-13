@@ -104,7 +104,8 @@ export const reducer = async (state, action) => {
       id = await createDetail({ ...row, masterID: state.masterID });
 
       // 接收後端傳回的 id , 加入 row 至陣列
-      state.dataDetail.unshift({ ...row,masterID: state.masterID, id });
+      // state.dataDetail.unshift({ ...row,masterID: state.masterID, id });
+      state.dataDetail.push({ ...row,masterID: state.masterID, id });
       return {
         ...state,
         isDetailFormOpen: false,

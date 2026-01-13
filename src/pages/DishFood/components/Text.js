@@ -42,8 +42,9 @@ export default function Text({
       return;
     }
 
-    const findedIndex = () => {
-      return dataDetail.findIndex((obj) => obj.masterID === masterID);
+    const findedIndex = (id) => {
+    //   return dataDetail.findIndex((obj) => obj.masterID === masterID);
+      return dataDetail.findIndex((obj) => obj.id === id);
     };
 
     return (
@@ -56,14 +57,15 @@ export default function Text({
             {/* 欄位項目 */}
 
             {temp.map((obj, index) => {
-              return (
-                <ListItem
-                  onClick={() => handleEditDetail(obj, findedIndex())}
-                  key={uuidv4()}
-                >
-                  {obj[column]}
-                </ListItem>
-              );
+              if (obj[column] !== "")
+                return (
+                  <ListItem
+                    onClick={() => handleEditDetail(obj, findedIndex(obj.id))}
+                    key={uuidv4()}
+                  >
+                    {obj[column]}
+                  </ListItem>
+                );
             })}
           </List>
         </TableCell>
