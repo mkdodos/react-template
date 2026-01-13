@@ -5,6 +5,7 @@ import schemaDetail from "./detail/data/schema.json";
 import { reducer } from "./data/reducer";
 
 import PhoneView from "./components/PhoneView";
+import Text from "./components/Text";
 import TableViewDetail from "./detail/components/TableView";
 import TableView from "./master/components/TableView";
 
@@ -13,6 +14,14 @@ import MasterAddForm from "./master/components/AddForm";
 import EditFormDetail from "./detail/components/EditForm";
 
 import ScrollTopButton from "../../components/ScrollTopButton";
+
+import {
+  TableBody,
+  Table,
+  TableCell,
+  TableRow,
+  Input,
+} from "semantic-ui-react";
 
 export default function index() {
   // 預設資料物件
@@ -39,8 +48,9 @@ export default function index() {
   const [masterRow, setMasterRow] = useState(defaultMasterRow);
 
   const defaultDetailRow = {
-    date: new Date().toISOString().substring(0, 10),
-    section: "",
+    dish: "",
+    fridge: "",
+    tobuy: "",
   };
 
   const [detailRow, setDetailRow] = useState(defaultDetailRow);
@@ -68,32 +78,42 @@ export default function index() {
 
   return (
     <>
-      <PhoneView
+      <Text
         data={state.data}
         dataDetail={state.dataDetail}
+        loading={state.loading}
         handleAdd={handleAdd}
         handleEdit={handleEdit}
         handleAddDetail={handleAddDetail}
         handleEditDetail={handleEditDetail}
       />
+
+      {/* <PhoneView
+        data={state.data}
+        dataDetail={state.dataDetail}
+        loading={state.loading}
+        handleAdd={handleAdd}
+        handleEdit={handleEdit}
+        handleAddDetail={handleAddDetail}
+        handleEditDetail={handleEditDetail}
+      /> */}
       {/* 顯示主表 */}
-      <TableView
+      {/* <TableView
         data={state.data}
         dispatch={dispatch}
         columns={schema.columns}
         handleAdd={handleAdd}
         handleEdit={handleEdit}
         handleAddDetail={handleAddDetail}
-      />
-      <TableViewDetail
+      /> */}
+      {/* <TableViewDetail
         data={state.dataDetail}
         dispatch={dispatch}
         columns={schemaDetail.columns}
         handleAdd={handleAddDetail}
         handleEdit={handleEditDetail}
-      />
-      {/* <SearchBar dispatch={dispatch} /> */}
-      {/* <TableView state={state} dispatch={dispatch} columns={schema.columns} handleAdd={handleAdd} /> */}
+      /> */}
+
       <MasterAddForm
         state={state}
         dispatch={dispatch}
@@ -107,8 +127,6 @@ export default function index() {
         setRow={setDetailRow}
         columns={schemaDetail.columns}
       />
-      {/* <DetailView state={state} dispatch={dispatch}  /> */}
-      {/* <ScrollTopButton/> */}
     </>
   );
 }

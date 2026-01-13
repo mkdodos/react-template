@@ -24,6 +24,8 @@ export const reducer = async (state, action) => {
       const data = await read(action.params);
       const dataDetail = await readDetail();
 
+      console.log(data)
+
       return {
         ...state,
         data,
@@ -62,6 +64,7 @@ export const reducer = async (state, action) => {
     // 編輯
     case "EDIT_DETAIL":
       console.log("edit detail");
+      console.log(action.payload.index);
       return {
         ...state,
         editedDetailRowIndex: action.payload.index,
@@ -122,6 +125,8 @@ export const reducer = async (state, action) => {
 
     // 更新
     case "UPDATE_DETAIL":
+      console.log('update detail')
+      console.log(state.editedDetailRowIndex)
       await updateDetail(row);
       Object.assign(state.dataDetail[state.editedDetailRowIndex], row);
 
@@ -145,6 +150,7 @@ export const reducer = async (state, action) => {
     // 刪除
     case "DELETE_DETAIL":
       id = action.payload.id;
+      console.log(id)
       await destoryDetail(id);
       return {
         ...state,

@@ -1,128 +1,60 @@
-import { Fragment } from "react";
 import {
-  Table,
-  TableHeader,
-  TableHeaderCell,
-  TableBody,
   TableRow,
+  TableHeaderCell,
+  TableHeader,
+  TableFooter,
   TableCell,
-  Label,
-  Button,
-  Divider,
-  Icon,
-  List,
+  TableBody,
+  Table,
   ListItem,
+  List,
+  Button,
 } from "semantic-ui-react";
-import { v4 as uuidv4 } from "uuid";
-import { getWeekday } from "../../../utils/date";
-import index from "..";
 
-export default function PhoneView({
-  data,
-  dataDetail,
-  handleAdd,
-  handleAddDetail,
-  handleEdit,
-  handleEditDetail,
-}) {
+export default function PhoneView(data, dataDetail, loading) {
   console.log(data);
-  const groupedData = Object.groupBy(data, (obj) => obj.date);
-
-  const getColor = (date) => {
-    const weekday = getWeekday(date);
-    if (weekday == "六") return "teal";
-    if (weekday == "日") return "pink";
-  };
-
-  const detail = (masterID, column, text, color) => {
-    const temp = dataDetail.filter(
-      (objDetail) => objDetail.masterID === masterID
-    );
-    console.log(temp);
-    const tempJoin = temp.map((item) => item[column]).join("");
-
-    //  有資料才顯示
-    if (tempJoin === "") {
-      return;
-    }
+  const row = (text) => {
     return (
       <TableRow>
+        <TableCell width={2}>{text}</TableCell>
         <TableCell>
-          <Label color={color}>{text}</Label>
-        </TableCell>
-        <TableCell colSpan="2">
-          <ListItem key={uuidv4()}>
-            <List divided horizontal>
-              {/* 該日資料 */}
-              {temp.map((obj, index) => {
-                return (
-                  <ListItem
-                    onClick={() => handleEditDetail(obj, index)}
-                    key={uuidv4()}
-                  >
-                    {obj[column]}
-                  </ListItem>
-                );
-              })}
-            </List>
-          </ListItem>
+          <List celled horizontal>
+            {/* 欄位項目 */}
+            <ListItem as="a">About Us</ListItem>
+            <ListItem as="a">Sitemap</ListItem>
+            <ListItem as="a">Contact</ListItem>
+            <ListItem as="a">About Us</ListItem>
+            <ListItem as="a">Sitemap</ListItem>
+            <ListItem as="a">Contact</ListItem>
+          </List>
         </TableCell>
       </TableRow>
     );
   };
 
+  const table = (text) => {
+    return (
+      <Table unstackable>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderCell colSpan="2">1/13</TableHeaderCell>
+          </TableRow>
+        </TableHeader>
+
+        <TableBody>
+          {row("A")}
+          {row("B")}
+          {row("C")}
+        </TableBody>
+      </Table>
+    );
+  };
+
   return (
-    <Table basic="very" unstackable padded>
-      <TableHeader>
-        <TableRow>
-          <TableHeaderCell colSpan="3">
-            {/* 新增鈕 */}
-            <Button icon onClick={handleAdd}>
-              <Icon name="plus" />
-            </Button>
-          </TableHeaderCell>
-          {/* <TableHeaderCell>           
-            <Button icon onClick={handleAdd}>
-              <Icon name="plus" />
-            </Button>
-          </TableHeaderCell>
-          <TableHeaderCell>           
-            <Button icon onClick={handleAdd}>
-              <Icon name="plus" />
-            </Button>
-          </TableHeaderCell> */}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {data.map((obj,index) => {
-          return (
-            <Fragment key={uuidv4()}>
-              {/* 日期 */}
-              <TableRow>
-                <TableCell colSpan="2">
-                  <Label basic color={getColor(obj.date)} size="large">
-                    {obj.date} ({getWeekday(obj.date)}) {obj.section}
-                  </Label>
-                </TableCell>
-                <TableCell colSpan="2">
-                  <Button icon onClick={() => handleAddDetail(obj.id)}>
-                    <Icon name="plus" />
-                  </Button>
-                  <Button icon onClick={() => handleEdit(obj,index)}>
-                    <Icon name="pencil" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-              {detail(obj.id, "dish", "佳餚", "pink")}
-              {detail(obj.id, "fridge", "冰箱", "teal")}
-              {detail(obj.id, "tobuy", "待購", "olive")}
-              {/* 有資料才顯示 */}
-              {/* {listItem2(obj, "dish", "佳餚", "pink")} */}
-            </Fragment>
-          );
-        })}
-      </TableBody>
-    </Table>
+    <>
+      {data.map((obj) => {
+        console.log(obj);
+      })}
+    </>
   );
-  //   return <div>{JSON.stringify(data)}</div>;
 }

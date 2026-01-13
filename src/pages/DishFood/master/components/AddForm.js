@@ -12,9 +12,8 @@ import {
   TableCell,
   TableRow,
   Input,
+  Form
 } from "semantic-ui-react";
-
-import CustSelect from "../../../../components/dropdown/CustSelect";
 
 export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
   const handleInputChange = (e) => {
@@ -30,44 +29,49 @@ export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
     }
   };
   return (
-    <div>
+    <>
       <Modal
         onClose={() => dispatch({ type: "CLOSE_MASTERADDFORM" })}
         open={state.isMasterAddFormOpen}
+        closeIcon
       >
         <ModalHeader>
-          <Header>新增</Header>
+          新增
+          {/* <Header>新增123</Header> */}
           {/* <Header>新增{state.masterID}</Header> */}
           {/* {JSON.stringify(state)} */}
         </ModalHeader>
         <ModalContent>
-          <Table definition>
-            <TableBody>
-              <TableRow>
-                <TableCell width={4}>日期</TableCell>
-
-                <TableCell>
-                  <Input
-                    onChange={handleInputChange}
-                    value={row?.date}
-                    type="date"
-                    name="date"
-                  />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell width={4}>時段</TableCell>
-                <TableCell>
-                  <Input
-                    onChange={handleInputChange}
-                    value={row?.section}
-                    type="text"
-                    name="section"
-                  />
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          <Form>
+            <Table unstackable definition>
+              <TableBody>
+                <TableRow>
+                  <TableCell width={3}>日期</TableCell>
+                  <TableCell>
+                    <Input
+                      onChange={handleInputChange}
+                      value={row?.date}
+                      type="date"
+                      name="date"
+                      fluid
+                    />
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell width={3}>時段</TableCell>
+                  <TableCell>
+                    <Input
+                      onChange={handleInputChange}
+                      value={row?.section}
+                      type="text"
+                      name="section"
+                      fluid
+                    />
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </Form>
         </ModalContent>
         <ModalActions>
           <Button
@@ -82,6 +86,6 @@ export default function AddForm({ row, setRow, setOpen, state, dispatch }) {
           <Button content="儲存" onClick={save} positive />
         </ModalActions>
       </Modal>
-    </div>
+    </>
   );
 }
