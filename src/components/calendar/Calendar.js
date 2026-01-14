@@ -25,12 +25,21 @@ export default function Calendar() {
   for (let i = 1; i <= daysInMonth; i++) days.push(i);
 
   console.log(days);
+  const isToday = (day) =>
+    day === today.getDate() &&
+    month === today.getMonth() &&
+    year === today.getFullYear();
   return (
     <div className="calendar-container">
       <div className="calendar-grid">
         {days.map((day, index) => {
+          const classes = [
+            "day-cell",
+            day ? "" : "empty",
+            isToday(day) ? "today" : "",
+          ].join(" ");
           return (
-            <div key={index} className="day-cell">
+            <div key={index} className={classes}>
               {day}
             </div>
           );
