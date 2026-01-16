@@ -1,9 +1,10 @@
 import React, { useState, useRef } from "react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
-import "./Calendar.css";
+// import "./CalendarPDF.css";
+import { Button, Icon } from "semantic-ui-react";
 
-const Calendar = () => {
+const CalendarPDF = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const calendarRef = useRef(null); // 用來抓取要輸出的 DOM
 
@@ -65,6 +66,10 @@ const Calendar = () => {
   for (let i = 0; i < firstDayOfMonth; i++) days.push(null);
   for (let i = 1; i <= daysInMonth; i++) days.push(i);
 
+  const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
+  const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
+  const thisMonth = () => setCurrentDate(new Date());
+
   return (
     <div>
       {/* 操作按鈕 */}
@@ -84,6 +89,25 @@ const Calendar = () => {
         </button>
       </div>
 
+      {/* 標題與切換按鈕 */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "10px",
+        }}
+      >
+        <Button circular icon onClick={prevMonth}>
+          <Icon name="chevron left" />
+        </Button>
+
+        <Button onClick={thisMonth}>當月</Button>
+
+        <Button circular icon onClick={nextMonth}>
+          <Icon name="chevron right" />
+        </Button>
+      </div>
+
       {/* 加上 ref 以便選取 */}
       <div ref={calendarRef} className="calendar-container">
         <div className="calendar-header">
@@ -94,22 +118,6 @@ const Calendar = () => {
           <strong className="month-label">{month + 1}月</strong>
 
           <div className="header-right"></div>
-
-          {/* <button>A</button> */}
-          {/* <strong>
-            {year}          
-          </strong>
-           <strong>
-            {month+1}月
-          </strong>
-            <strong>
-            {year}          
-          </strong> */}
-          {/* <strong>&nbsp;&nbsp;&nbsp;&nbsp;</strong> */}
-          {/* <strong style={{ fontSize: "1.5rem" }}>
-            {year}年 {month + 1}月
-          </strong> */}
-          {/* <button>A</button> */}
         </div>
 
         <div className="calendar-grid">
@@ -147,4 +155,4 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default CalendarPDF;

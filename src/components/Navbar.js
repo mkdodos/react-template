@@ -46,9 +46,18 @@ export default function Navbar() {
         <Menu.Item as={Link} to="/dish-food">
           菜單料理
         </Menu.Item>
-        <Menu.Item as={Link} to="/calendar">
+        <Menu.Item as={Link} to="/test">
+          月曆
+        </Menu.Item>
+        {/* <Menu.Item as={Link} to="/calendar">
           Calendar
         </Menu.Item>
+        <Menu.Item as={Link} to="/calendar-demo">
+          CalendarDemo
+        </Menu.Item>
+         <Menu.Item as={Link} to="/calendar-pdf">
+          CalendarPDF
+        </Menu.Item> */}
         {/* <Menu.Item as={Link} to="/dish">
           Dish
         </Menu.Item>

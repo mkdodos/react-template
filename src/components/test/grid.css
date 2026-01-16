@@ -1,0 +1,69 @@
+.grid-table {
+  display: grid;
+  /* 定義三欄：第一欄 80px，第二欄自動填滿，第三欄 100px */
+  /* grid-template-columns: 80px 1fr 100px; */
+  grid-template-columns: repeat(7, 1fr);
+  border: 1px solid #ccc;
+}
+
+.test-grid-container {
+  padding-bottom: 30px !important; /* 增加底部留白，防止印出時太貼邊 */
+  background-color: white;
+}
+
+.test-grid-cell {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  /* border-right: 1px solid #eee; */
+  display: flex;
+  justify-content: center; /* 水平置中 (取代 text-align) */
+  /* text-align: center; */
+  align-items: center; /* 內容垂直居中 */
+}
+
+/* 星期幾 */
+.test-grid-weekday {
+  text-align: center;
+  padding: 15px 0;
+  font-weight: bold;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 年月 */
+.test-grid-header {
+  display: flex;
+  justify-content: center; /* 水平置中 */
+  align-items: center; /* 垂直置中 */
+  padding: 15px 0; /* 增加一點上下間距比較美觀 */
+  font-size: 1.2rem; /* 字體稍微放大 */
+  font-weight: bold;
+}
+
+/* 上下月切換鈕 */
+.test-switch-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.test-switch-btn-left-side {
+  display: flex;
+  /* grid-template-columns: repeat(3, 1fr); */
+  justify-content: space-around;
+}
+
+.test-switch-btn-right-side {
+  display: flex;
+  /* justify-content: space-around; */
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+/* 色彩標記 */
+.test-grid-cell-sunday {
+  color: #d32f2f !important; /* 紅色 */
+}
+
+.test-grid-cell-saturday {
+  color: #2e7d32 !important; /* 綠色 */
+}

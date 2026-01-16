@@ -21,9 +21,11 @@ import MasterDetail from "./pages/MasterDetail"
 
 import { Container, Divider } from "semantic-ui-react";
 
-import Calendar from "./components/Calendar";
-import CalendarTest from "./components/calendar/Calendar";
+import CalendarDemo from "./components/calendar/CalendarDemo";
 import CalendarPDF from "./components/calendar/CalendarPDF";
+import Calendar from "./components/calendar/Calendar";
+import Test from "./components/test/Test";
+
 
 export default function App() {
   return (
@@ -32,9 +34,10 @@ export default function App() {
         <Navbar />
         <Divider/>        
         <Routes>
-          <Route path="/calendar-pdf" element={<CalendarPDF />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/calendar-demo" element={<CalendarDemo />} />
+          <Route path="/calendar-pdf" element={<CalendarPDF />} />          
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/calendar-test" element={<CalendarTest />} />
           <Route path="/list" element={<List />} />
           <Route path="/segment" element={<Segment />} />
           <Route path="/modal" element={<Modal />} />
