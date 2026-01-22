@@ -45,6 +45,28 @@ export default function index() {
         { id: 103, name: "手工麵條", amount: "2份", checked: false },
       ],
     },
+    {
+      id: 2, // 唯一識別碼
+      name: "相機", // 料理名稱
+      date: new Date().toISOString().split("T")[0], // 預設日期為今天
+      ingredients: [
+        // 此料理所需的食材列表
+        { id: 101, name: "牛腱", amount: "600g", checked: false }, // checked 用於追蹤是否已採購
+        { id: 102, name: "白蘿蔔", amount: "1條", checked: false },
+        { id: 103, name: "手工麵條", amount: "2份", checked: false },
+      ],
+    },
+    {
+      id: 3, // 唯一識別碼
+      name: "烤鴨", // 料理名稱
+      date: new Date().toISOString().split("T")[0], // 預設日期為今天
+      ingredients: [
+        // 此料理所需的食材列表
+        { id: 101, name: "牛腱", amount: "600g", checked: false }, // checked 用於追蹤是否已採購
+        { id: 102, name: "白蘿蔔", amount: "1條", checked: false },
+        { id: 103, name: "手工麵條", amount: "2份", checked: false },
+      ],
+    },
   ]);
 
   // 儲存編輯後的結果
@@ -66,14 +88,15 @@ export default function index() {
   return (
     <div>
       {/* 渲染所有料理卡片 */}
-      {meals.map((meal) => (
-        <Product key={meal.id} meal={meal} />
-        // <div key={meal.id}>
-        //   {meal.name}
-        //   {meal.date}
-        // </div>
-      ))}
-
+      <ul className="product-grid">
+        {meals.map((meal) => (
+          <Product key={meal.id} meal={meal} />
+          // <div key={meal.id}>
+          //   {meal.name}
+          //   {meal.date}
+          // </div>
+        ))}
+      </ul>
       <CustomForm />
 
       {/* 表單提交按鈕 */}

@@ -12,7 +12,7 @@ html, body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  overflow: hidden; /* 徹底禁止捲動 */
+  /* overflow: hidden; 徹底禁止捲動 */
 }
 
 /* 3. 置中容器 */

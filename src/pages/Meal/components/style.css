@@ -13,16 +13,48 @@
   background: #ffffff;
   border-radius: 15px;
   overflow: hidden; /* 確保內容不會超出圓角 */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); */
+  /* 水平 , 垂直 , 模糊 , 顏色 */
+  /* box-shadow: 0px 10px 5px grey; */
+  /* 0 偏移，20px 模糊，淡淡的黑色透明度 */
+  /* box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2); */
+  /* transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease; */
   display: flex;
   flex-direction: column;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #A1C2BD;
+}
+
+.product-card1 {
+  background: #fff;
+  border-radius: 12px;
+  /* 第一層：近距離深陰影，第二層：遠距離淡陰影 */
+  /* box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease; */
 }
 
 .product-card:hover {
-  transform: translateY(-10px); /* 往上漂浮感 */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  /* 往上漂浮感 */
+  /* transform: translateY(-10px); */
+
+  /* box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12); */
+  /* box-shadow: 0 15px 30px #3b82f6(0, 0, 0, 0.12); */
+  /* box-shadow: 3px 3px 8px rgba(6, 30, 41, 0.3); */
+  /* border: 1px solid #3b82f6; */
+  border: 1px solid #FF3F7F;
+  box-shadow: 0px 2px 5px rgba(255, 63, 127, 0.3)
+  /* FF3F7F */
+  /* box-shadow:
+    3px 3px 3px rgba( 255, 167,37, 0.6),
+    -3px -3px 3px rgba(255, 167,37,0.6); */
+
+  /* transform: translateY(-5px); */
+  /* box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04); */
 }
 
 /* 3. 圖片區域（示意） */
