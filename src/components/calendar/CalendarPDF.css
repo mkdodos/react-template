@@ -12,18 +12,14 @@
   font-family: sans-serif;
   box-sizing: border-box;
 
-
   /* --- 關鍵修改：去掉圓角與陰影 --- */
   /* border-radius: 0 !important;   */
-  box-shadow: none !important;    /* 去掉陰影，讓邊界乾淨 */
+  box-shadow: none !important; /* 去掉陰影，讓邊界乾淨 */
   /* border: none;                    */
-
 }
 
 .calendar-header {
-
   margin-bottom: 10px; /* 縮小標題與網格間的間距 */
-  
 
   /* 作為定位基準 */
   position: relative;
@@ -33,7 +29,7 @@
   align-items: center;
   /* padding: 20px 5px; 增加上下間距 */
   min-height: 30px;
-   /* 給予足夠的垂直空間 */
+  /* 給予足夠的垂直空間 */
   /* margin-bottom: 30px; */
 }
 
@@ -151,9 +147,17 @@
 
 /* 今日樣式 */
 .day-cell.today {
-  background-color: #007bff;
+  /* background-color: #007bff; */
   color: white;
   font-weight: bold;
+  width: 50px;
+  height: 50px;
+
+  /* 圓形核心設定 */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 選中日期樣式 */

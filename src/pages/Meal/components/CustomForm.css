@@ -1,0 +1,87 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f4f7f6;
+  min-height: 100vh;
+}
+
+.styled-form {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 450px;
+}
+
+.form-title {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* 輸入框群組 */
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666;
+  transition: color 0.3s;
+}
+
+/* 輸入框通用樣式 */
+input, select, textarea {
+  padding: 12px 16px;
+  border: 2px solid #edf2f7;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #fcfcfc;
+}
+
+/* 焦點互動效果 */
+input:focus, select:focus, textarea:focus {
+  border-color: #3b82f6;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* 讓 Label 在 Focus 時變色 */
+.input-group:focus-within label {
+  color: #3b82f6;
+}
+
+/* 提交按鈕 */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}

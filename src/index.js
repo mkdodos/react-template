@@ -1,7 +1,9 @@
 import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
-import 'semantic-ui-css/semantic.min.css'
+import "semantic-ui-css/semantic.min.css";
 import App from "./App";
+
+
 
 // root 對應 index.html 的 div id="root"
 const container = document.getElementById("root");
@@ -11,5 +13,5 @@ const root = ReactDOM.createRoot(container);
 root.render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>
+  </BrowserRouter>,
 );

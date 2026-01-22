@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div>
       <Menu>
-        {/* <Dropdown item text="UI">
+        <Dropdown item text="UI">
           <DropdownMenu>
             <Menu.Item as={Link} to="/list">
               List
@@ -38,13 +38,16 @@ export default function Navbar() {
               Modal
             </Menu.Item>
           </DropdownMenu>
-        </Dropdown> */}
+        </Dropdown>
 
         {/* <Menu.Item as={Link} to="/crud">
           Crud
         </Menu.Item> */}
         <Menu.Item as={Link} to="/dish-food">
           菜單料理
+        </Menu.Item>
+        <Menu.Item as={Link} to="/meal">
+          智能備菜
         </Menu.Item>
         <Menu.Item as={Link} to="/test">
           月曆

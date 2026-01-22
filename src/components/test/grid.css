@@ -7,18 +7,70 @@
 }
 
 .test-grid-container {
-  padding-bottom: 30px !important; /* 增加底部留白，防止印出時太貼邊 */
+  /* 增加底部留白，防止印出時太貼邊 */
+  /* padding-bottom: 30px !important;  */
   background-color: white;
+  /* 固定寬度，方便計算 */
+  /* width: 1100px;  
+  height: 780px; */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* color:red */
+}
+
+.test-grid-table {
+  /* flex-grow: 1; */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .test-grid-cell {
-  padding: 10px;
   border-bottom: 1px solid #eee;
-  /* border-right: 1px solid #eee; */
   display: flex;
-  justify-content: center; /* 水平置中 (取代 text-align) */
-  /* text-align: center; */
-  align-items: center; /* 內容垂直居中 */
+  justify-content: center; /* 水平置中 */
+  align-items: center; /* 垂直置中 */
+  min-height: 60px; /* 稍微加高，讓垂直置中更明顯 */
+  padding: 5px; /* 減少內距以免擠壓圓圈 */
+  box-sizing: border-box;
+  /* padding: 10px;
+  border-bottom: 1px solid #eee; 
+  display: flex;
+  justify-content: center; 
+  min-height: 30px; 
+  align-items: center;  */
+}
+
+/* 今日樣式 */
+.today-circle {
+  display: flex; /* 讓數字在圓圈內置中 */
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  line-height: 1;
+  box-sizing: border-box;
+
+  /* 確保沒有外邊距干擾 */
+  margin: 0;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;  
+  width: 35px;
+  height: 35px;  
+  border-radius: 50%; 
+  margin: 0 auto;  
+  line-height: 1;
+  box-sizing: border-box;  */
 }
 
 /* 星期幾 */
@@ -26,6 +78,7 @@
   text-align: center;
   padding: 15px 0;
   font-weight: bold;
+  /* background-color: #ECECEC; */
   background-color: #f8f9fa;
   border-bottom: 1px solid #ddd;
 }

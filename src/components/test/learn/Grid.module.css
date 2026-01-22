@@ -1,0 +1,47 @@
+/* 1. 全域重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. 鎖定視窗高度 */
+html, body {
+  /* height: 100%; */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* 徹底禁止捲動 */
+}
+
+/* 3. 置中容器 */
+.canva {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: calc(100vh - 100px); */
+  height: 100vh; 
+  /* 繼承 body 的 100vh */
+  width: 100%;
+  flex-grow: 1; /* 關鍵：自動撐滿剩下所有的垂直空間 */
+}
+
+/* 4. 九宮格 */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 90vw;
+  max-width: 300px;
+  border-top: 1px solid blueviolet;
+  border-left: 1px solid blueviolet;
+  margin: 0;
+}
+
+.item {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset -1px -1px 0 0 blueviolet;
+}

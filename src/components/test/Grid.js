@@ -7,6 +7,13 @@ function Grid({ data, year, month }, ref) {
   // const calendarRef = useRef(null);
   // const { exportPDF } = useExportPDF(); // 引入工具
 
+  const today = new Date();
+
+  const isToday = (day) =>
+    day === today.getDate() &&
+    month === today.getMonth() &&
+    year === today.getFullYear();
+
   return (
     <div ref={ref} className="test-grid-container">
       <div className="test-grid-header">
@@ -14,7 +21,7 @@ function Grid({ data, year, month }, ref) {
           {year}年 {month}月
         </div>
       </div>
-      <div className="grid-table">
+      <div className="test-grid-table">
         {["日", "一", "二", "三", "四", "五", "六"].map((d) => (
           <div key={d} className="test-grid-weekday">
             {d}
@@ -23,16 +30,39 @@ function Grid({ data, year, month }, ref) {
         {data.map((day, index) => {
           const isSunday = index % 7 === 0;
           const isSaturday = index % 7 === 6;
+
+          const classes = [
+            "test-grid-cell",
+            day ? "" : "empty",
+            isSunday ? "sunday" : "",
+            isSaturday ? "saturday" : "",
+            // isToday(day) ? "today" : "",
+            // day === 16 ? "today-circle" : "",
+            // isSelected(day) ? "selected" : "",
+          ].join(" ");
+
           return (
             <div
               key={index}
-              className={`test-grid-cell ${day ? "" : "empty"} ${
-                isSunday ? "test-grid-cell-sunday" : ""
-              }
-            ${isSaturday ? "test-grid-cell-saturday" : ""}`}
-              // className="test-grid-cell"
+              className={classes}
+              //   className={`test-grid-cell ${day ? "" : "empty"} ${
+              //     isSunday ? "test-grid-cell-sunday" : ""
+              //   }
+
+              // ${isSaturday ? "test-grid-cell-saturday" : ""}`}
+
+              //   className={`test-grid-cell  ${
+              //     isSunday ? "test-grid-cell-sunday" : ""
+              //   }
+
+              // ${isSaturday ? "test-grid-cell-saturday" : ""}`}
             >
-              {day}
+              {day ? (
+                <span className={day === 16 ? "today-circle" : ""}>{day}</span>
+              ) : null}
+
+              {/* {day} */}
+              {/* {classes} */}
             </div>
           );
         })}

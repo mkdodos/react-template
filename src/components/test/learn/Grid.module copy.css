@@ -1,0 +1,27 @@
+.container {
+  display: grid;
+  /* 關鍵：將寬度設為 100% 或所需的百分比 */
+  width: 100%; 
+  max-width: 600px; /* 設定最大寬度，避免在電腦版過大 */
+  margin: 0 auto;
+  
+  /* 三欄平分 */
+  grid-template-columns: repeat(3, 1fr); 
+  
+  /* 建立外層左邊與上邊的線 */
+  border-left: 1px solid #6A9C89;
+  border-top: 1px solid #6A9C89;
+}
+
+.item {
+  /* 關鍵：確保高度永遠等於寬度 */
+  aspect-ratio: 1 / 1; 
+  
+  /* 建立右邊與下邊的線 (不佔空間的內陰影) */
+  box-shadow: 10px 10px 5px 0 #6A9C89;
+  
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
