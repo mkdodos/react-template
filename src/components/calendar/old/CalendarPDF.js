@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
-import "./Calendar.css";
+// import "./CalendarPDF.css";
 import { Button, Icon } from "semantic-ui-react";
 
-const Calendar = () => {
+const CalendarPDF = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const calendarRef = useRef(null); // 用來抓取要輸出的 DOM
 
@@ -155,4 +155,4 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default CalendarPDF;

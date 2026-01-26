@@ -23,7 +23,9 @@
     box-shadow 0.3s ease; */
   display: flex;
   flex-direction: column;
-  border: 1px solid #A1C2BD;
+  /* border: 1px solid #A1C2BD; */
+  border: 1px solid #f0f0f0;
+   /* border: 1px solid gray; */
 }
 
 .product-card1 {
@@ -45,7 +47,7 @@
   /* box-shadow: 3px 3px 8px rgba(6, 30, 41, 0.3); */
   /* border: 1px solid #3b82f6; */
   border: 1px solid #FF3F7F;
-  box-shadow: 0px 2px 5px rgba(255, 63, 127, 0.3)
+  /* box-shadow: 0px 2px 5px rgba(255, 63, 127, 0.3) */
   /* FF3F7F */
   /* box-shadow:
     3px 3px 3px rgba( 255, 167,37, 0.6),

@@ -22,9 +22,9 @@ import Meal from "./pages/Meal"
 
 import { Container, Divider } from "semantic-ui-react";
 
-import CalendarDemo from "./components/calendar/CalendarDemo";
+// import CalendarDemo from "./components/calendar/CalendarDemo";
 import CalendarPDF from "./components/calendar/CalendarPDF";
-import Calendar from "./components/calendar/Calendar";
+// import Calendar from "./components/calendar/Calendar";
 import Test from "./components/test/Test";
 // import "./App.css"
 
@@ -47,9 +47,9 @@ export default function App() {
           ))}
 
           <Route path="/test" element={<Test />} />
-          <Route path="/calendar-demo" element={<CalendarDemo />} />
+          {/* <Route path="/calendar-demo" element={<CalendarDemo />} /> */}
           <Route path="/calendar-pdf" element={<CalendarPDF />} />
-          <Route path="/calendar" element={<Calendar />} />
+          {/* <Route path="/calendar" element={<Calendar />} /> */}
           <Route path="/list" element={<List />} />
           <Route path="/segment" element={<Segment />} />
           {/* <Route path="/modal" element={<Modal />} /> */}
